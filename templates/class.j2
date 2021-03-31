@@ -48,7 +48,7 @@ class {{name}}:
 {%- endfor %}
 
     def __str__(self):
-{% if has_attribute('value') %}
+{% if has_attribute('prose') %}
         return str(self.value)
 {% elif has_attribute('title') %}
         return str(self.title)

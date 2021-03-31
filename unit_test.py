@@ -99,7 +99,7 @@ class TestComponentDef(unittest.TestCase):
         oscal = self.createOSCAL()
         cdef = oscal.objects.get('Component_Definition')[0]
         self.assertEqual(
-            cdef.metadata.title.value,
+            cdef.metadata.title.prose,
             'Test Component Defintion'
         )
         self.assertEqual(
