@@ -24,3 +24,14 @@ unittest <-> pyobjects
 unittest --> output_xml
 unittest --> output_uml
 ```
+
+## Versioning 
+
+Currently only using Master Branch until proper project cadence and Minimal Viable Product is achieved.
+
+Below is the planned versioning methodology that will be used once tagged releases are established.
+
+```plantuml 
+scale .666
+!include Versioning.puml
+```
