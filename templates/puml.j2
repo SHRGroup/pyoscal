@@ -1,0 +1,29 @@
+@startuml
+{# top to bottom #}
+skinparam ranksep 5 
+
+skinparam monochrome true
+
+{% for group in classes %}
+package {{group}} {
+{% for class in classes[group] %}
+    class "{{class.name}}" as {{group|lower}}_{{class.name|lower}} {
+    {%- for field in class.attributes %}
+        {{field.name}} : {{field.field_type}}
+    {%- endfor %}
+    {%- for field in class.subcomponents %}
+        {{field.name}} : {{field.field_type}}
+    {%- endfor %}
+        {method} fromDict(obj)
+    }
+    {% for alias in class.aliases %}
+    class "{{alias}}" as {{group|lower}}_{{class.name|lower}}_{{alias}} 
+    {{group|lower}}_{{class.name|lower}} <|-- {{group|lower}}_{{class.name|lower}}_{{alias}} : Inherits
+    {%- endfor -%} {# end aliases #}
+{%- endfor -%} {# end classes#}
+}
+{% endfor %} {# end group #}
+{% for i in imports %}{% for ref in imports[i] -%}
+{{ref|replace('-','_')|lower}} <|-- {{i|replace('-','_')|lower}} : Imports
+{% endfor %}{% endfor %}{# end refs #}{# end imports #}
+@enduml

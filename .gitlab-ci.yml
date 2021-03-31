@@ -1,0 +1,52 @@
+build:
+  image: python:3
+  stage: build
+  before_script:
+    - apt install -y git
+    - git config submodule.pyoscal.url https://${GITLAB_USER}:${GITLAB_PASS}@gitlab.com/shrgroup/oss/python/pyoscal.git
+    - git submodule update --init --recursive
+    - pip install -r requirements.txt
+  script:
+    - python parse_meta.py
+  artifacts:
+    when: always
+    paths:
+      - "*"
+      - pyoscal/
+
+unittest:
+  image: python:3
+  stage: test 
+  dependencies:
+    - build
+  before_script:
+    - pip install -r requirements.txt
+  script:
+    - export PYTHONPATH="$PYTHONPATH:$(pwd)/pyoscal/"
+    - python unit_test.py
+
+publish:
+  image:
+    name: alpine/git:latest
+    entrypoint: [""]
+  stage: deploy
+  dependencies:
+    - build
+  script:
+    - git submodule update
+    - cd pyoscal/
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+    - git config --global user.name "${GITLAB_USER_ID}"
+    - git add pyoscal/
+    - git commit -m "$(git log -1 --pretty=%B)"
+    - git push origin HEAD:master --force
+
+  artifacts:
+    when: always
+    paths:
+      - "*"
+      - pyoscal/
+
+
+
+    

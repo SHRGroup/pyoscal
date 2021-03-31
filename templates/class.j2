@@ -1,0 +1,132 @@
+class {{name}}:
+    """{{formal_name}}
+
+    {{description | wordwrap(70)}}
+
+    Attributes:
+{%- for attrib in all_attributes() %}{% set attr = attrib.name ~ ' ('~attrib.field_type~'):' ~ attrib.description| default(" ")%}
+        {{attr | wordwrap( 60 )}}
+{% endfor %}
+    """
+
+    contexts = [
+{%- for cont in contexts %}
+        "{{cont}}",
+{%- endfor %}
+    ]
+    parameters = [
+{%- for param in list_parameters() %}
+        "{{param}}",
+{%- endfor %}
+    ]
+    subcomponents = [ 
+{%- for comp in list_subcomponents() %}
+        "{{comp}}",
+{%- endfor %}
+    ]
+
+    def __init__(
+        self,
+{%- for a in required_parameters() %}
+        {{a.name}},
+{%- endfor %}
+        use_name='{{orig_name}}',
+{%- for a in optional_parameters() %}
+        {{a.name}}={{a.default | default(None)}},
+{%- endfor %}
+    ):
+
+{%- for a in all_attributes() %}
+        self._{{a.name}} = None
+        self.{{a.name}} = \
+            {{a.name}}
+{%- endfor %}
+        self.use_name = use_name
+{%- for a in arr_parameters() %}
+        if {{a.name}} is None:
+            self.{{a.name}} = []
+{%- endfor %}
+
+    def __str__(self):
+{% if has_attribute('value') %}
+        return str(self.value)
+{% elif has_attribute('title') %}
+        return str(self.title)
+{% elif has_attribute('uuid') %}
+        return str(self.uuid)
+{% elif has_attribute('name') %}
+        return str(self.name)
+{% else %}
+        return ""
+{% endif %}
+    @classmethod
+    def fromDict(cls, obj):
+        newcls = cls(
+{%- for attrib in all_attributes() %}
+            {{attrib.name}}=obj.get(
+                '{{attrib.name}}',
+                None),
+{%- endfor %}
+        )
+{%- for a in arr_parameters() %}
+        newcls.{{a.name}} = \
+            obj.get('{{a.group_name}}')
+{%- endfor %}
+{%- for a in all_attributes() %}{%- for name in a.names %}
+        newcls.{{a.name}} = \
+            obj.get('{{name|lower}}')
+{%- endfor %}{%- endfor %}
+        return newcls
+{% for a in prim_parameters() %}
+    @property
+    def {{a.name}}(self):
+        {%- if a.description | default(False) %}
+        """{{a.description | default("") | wordwrap(68)|replace('\n', '\n        ') }}
+        """{%- endif %}
+        return self._{{a.name}}
+
+    @{{a.name}}.setter
+    def {{a.name}}(self, x):
+        self._{{a.name}} = x
+{% endfor -%}
+{% for a in arr_parameters() %}
+    @property
+    def {{a.name}}(self):
+        {%- if a.description | default(False) %}
+        """{{a.description | default("") | wordwrap(68)|replace('\n', '\n        ') }}
+        """{%- endif %}
+        return self._{{a.name}}
+
+    @{{a.name}}.setter
+    def {{a.name}}(self, x):
+        if not isinstance(x, list) and x is not None:
+            x = [x]
+        if not bool(self._{{a.name}}):
+            self._{{a.name}} = []
+        if bool(x):
+            self._{{a.name}} += list(x)
+{% if a.group_name != a.name %}
+    @property
+    def {{a.group_name}}(self):
+        return self._{{a.name}}
+
+    @{{a.group_name}}.setter
+    def {{a.group_name}}(self, x):
+        self.{{a.name}}(x)
+{% endif %}
+{%- for name in a.names %}{% set name=name|lower %}{%- if name != a.name %}
+    @property
+    def {{name}}(self):
+        return self._{{a.name}}
+
+    @{{name}}.setter
+    def {{name}}(self, x):
+        self.{{a.name}}(x)
+{% endif %}{%- endfor %}{%- endfor -%}
+{%- for alias in aliases %}
+
+class {{alias}}({{name}}):
+    def __init__(self, **kw):
+        super({{alias}}, self).__init__(**kw)
+        self.use_name = '{{alias|lower}}'
+{% endfor -%}
