@@ -27,7 +27,7 @@ class ParsedField:
             ParsedField: Field to hold prose or raw text
         """
         newcls = cls()
-        newcls.name = 'value'
+        newcls.name = 'prose'
         newcls.field_type = 'str'
         newcls.description = 'Default value holder for raw data in texts'
         return newcls

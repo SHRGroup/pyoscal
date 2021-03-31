@@ -80,13 +80,13 @@ class OSCAL_XML(OSCAL_IO):
         else:
             return self.stringify(xmlobject)
         attributes = {}
-        value_id = 'value'
+        value_id = 'prose'
         for attribute in xmlobject.attrib:
             attr_name = self.clean_name(attribute).title()
             classpath = self.find_class(attr_name, contexts=contexts)
             local_vars = {
                 'attributes': {
-                    'value': xmlobject.attrib.get(attribute)}}
+                    'prose': xmlobject.attrib.get(attribute)}}
             try:
                 exec("newclass = {}.fromDict(attributes)".format(
                     classpath), globals(), local_vars)
@@ -133,7 +133,6 @@ class OSCAL_XML(OSCAL_IO):
         if rootname is None:
             rootname = obj.use_name
         root = etree.Element(rootname)
-        print(obj)
         if isinstance(obj, list):
             return list([self.export_obj(o) for o in obj])
         elif isinstance(obj, str):
@@ -144,7 +143,7 @@ class OSCAL_XML(OSCAL_IO):
             for parameter in obj.parameters:
                 param = getattr(obj, parameter)
                 if param is not None:
-                    root.attrib[param.use_name] = param.value
+                    root.attrib[param.use_name] = param.prose
             for subcomponent in obj.subcomponents:
                 subcomponent_obj = getattr(obj, subcomponent)
                 if subcomponent_obj:

@@ -64,7 +64,7 @@ class ParsedClass:
         newcls.add_subcomponents()
         # if len(newcls.all_attributes()) == 0 or
         # xmlobject.tag.endswith('field'):
-        if not newcls.has_attribute('value'):
+        if not newcls.has_attribute('prose'):
             newcls.attributes += [ParsedField().static_value()]
         return newcls
 
