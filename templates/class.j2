@@ -104,7 +104,8 @@ class {{name}}:
         if not bool(self._{{a.name}}):
             self._{{a.name}} = []
         if bool(x):
-            self._{{a.name}} += list(x)
+            if x != self._{{a.name}}:
+                self._{{a.name}} += list(x)
 {% if a.group_name != a.name %}
     @property
     def {{a.group_name}}(self):

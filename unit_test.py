@@ -53,8 +53,8 @@ class TestProfile(unittest.TestCase):
         count = 0
         for profile in oscal.objects.get('Profile'):
             for imp in profile.imports:
-                inc = imp.include
-                count += len(inc.call)
+                for inc in imp.include_controls:
+                    count += len(inc.with_id)
         self.assertEqual(count, 421)
 
 
