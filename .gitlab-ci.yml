@@ -5,6 +5,7 @@ build:
     - apt install -y git
     - git config submodule.pyoscal.url https://${GITLAB_USER}:${GITLAB_PASS}@gitlab.com/shrgroup/oss/python/pyoscal.git
     - git submodule update --init --recursive
+    - bash update_oscal.sh
     - pip install -r requirements.txt
   script:
     - python parse_meta.py
@@ -40,12 +41,14 @@ publish:
     - git add pyoscal/
     - git commit -m "$(git log -1 --pretty=%B)"
     - git push origin HEAD:master --force
-
   artifacts:
     when: always
     paths:
       - "*"
       - pyoscal/
+  only: # Only Publish Master on Main Repo (not forks)
+    - master@gitlab-org/gitlab
+
 
 
 
