@@ -31,7 +31,7 @@ class OSCAL:
     def find_object_byuuid(self, uuid):
         for obj in self.object_list():
             if hasattr(obj, 'uuid'):
-                if obj.uuid == uuid:
+                if str(obj.uuid) == uuid:
                     return obj
         return None
 
