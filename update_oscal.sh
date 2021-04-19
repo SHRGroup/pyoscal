@@ -8,5 +8,5 @@ git checkout $latestTag
 popd 
 
 git add OSCAL 
-git commit -m 'Updated to latest NIST OSCAL TAG'
+git diff-index --quiet HEAD || git commit -m "Updated to latest NIST OSCAL TAG ${latestTag}"
 # git push
