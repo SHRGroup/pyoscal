@@ -84,8 +84,7 @@ class ParsedClass:
                 if callable(func):
                     template_data[method] = func
         template_data.update(self.__dict__)
-        # template_data['find_class'] = find_class
-        # print(template_data)
+
         return template.render(template_data)
 
     def has_attribute(self, name):

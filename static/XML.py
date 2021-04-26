@@ -104,8 +104,11 @@ class OSCAL_XML(OSCAL_IO):
             if value_id not in xmlobject.attrib:
                 attributes[value_id] = self.stringify(xmlobject)
         else:
+            prose_value = ""
             for child in xmlobject:
                 childname = self.clean_name(self.get_tag(child)).title()
+                if childname.lower() in self.html_tags:
+                    prose_value += "<{0}>{1}</{0}>".format(self.get_tag(child),self.stringify(child))
                 x = self.objectify(child, contexts)
                 paramname = childname.lower()
                 if paramname in attributes:
@@ -115,6 +118,8 @@ class OSCAL_XML(OSCAL_IO):
                         attributes[paramname] = [x, attributes[paramname]]
                 else:
                     attributes[paramname] = x
+            if prose_value != "":
+                attributes[value_id] = prose_value
 
         local_vars = {'attributes': attributes}
         classpath = self.find_class(classname, contexts=contexts)

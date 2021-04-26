@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 import unittest
 
 sys.path.insert(0, './pyoscal/')
@@ -28,7 +29,7 @@ class TestCatalog(unittest.TestCase):
         catalog = oscal.objects.get('Catalog')[0]
         self.assertEqual(
             str(catalog.uuid),
-            'edaf664a-e984-4dbf-85ec-1104186fc12f')
+            '22054d80-252f-4ab8-ae9c-5bf69c9109a9')
         self.assertEqual(
             str(catalog.metadata.title),
             'Sample Security Catalog <em>for Demonstration</em> and Testing')
@@ -53,8 +54,8 @@ class TestProfile(unittest.TestCase):
         count = 0
         for profile in oscal.objects.get('Profile'):
             for imp in profile.imports:
-                inc = imp.include
-                count += len(inc.call)
+                for inc in imp.include_controls:
+                    count += len(inc.with_id)
         self.assertEqual(count, 421)
 
 
@@ -100,7 +101,7 @@ class TestComponentDef(unittest.TestCase):
         cdef = oscal.objects.get('Component_Definition')[0]
         self.assertEqual(
             cdef.metadata.title.prose,
-            'Test Component Defintion'
+            'Test Component Definition'
         )
         self.assertEqual(
             str(cdef.metadata.parties[0].uuid),
@@ -160,9 +161,9 @@ class TestExport(unittest.TestCase):
             'catalog/xml/basic-catalog.xml')
         with open(filepath, encoding='utf-8') as src:
             src_text = src.read()
+            src_text = re.sub("(<!--.*?-->)", "", src_text, flags=re.DOTALL)
 
         oscal = self.createOSCAL(filepath)
-        catalog = oscal.objects.get('Catalog')[0]
         out_text = oscal.export()
         self.assertEqual(
             len([c for c in src_text if c == '<']),
@@ -177,15 +178,10 @@ class TestExport(unittest.TestCase):
 
         oscal = self.createOSCAL(filepath)
         out_text = oscal.export()
-        # self.assertEqual(
-        #     len([c for c in src_text if c == '<']),
-        #     len([c for c in out_text if c == '<'])
-        # )
         self.assertEqual(
-            362, # Source Example file not updated against latest schema changes
+            len([c for c in src_text if c == '<']),
             len([c for c in out_text if c == '<'])
         )
-
 
 if __name__ == '__main__':
     unittest.main()
