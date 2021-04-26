@@ -47,7 +47,7 @@ publish:
       - "*"
       - pyoscal/
   only: # Only Publish Master on Main Repo (not forks)
-    - master@gitlab-org/gitlab
+    - master@shrgroup/oss/python/pyoscal-builder
 
 
 
