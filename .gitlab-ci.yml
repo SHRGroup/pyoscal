@@ -24,7 +24,12 @@ unittest:
     - pip install -r requirements.txt
   script:
     - export PYTHONPATH="$PYTHONPATH:$(pwd)/pyoscal/"
+    - env
     - python unit_test.py
+  artifacts:
+    when: always
+    paths:
+      - "*"
 
 publish:
   image:
