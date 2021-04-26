@@ -1,7 +1,7 @@
 class {{name}}:
     """{{formal_name}}
 
-    {{description | wordwrap(70)}}
+    {{description | default("", true) | wordwrap(70)}}
 
     Attributes:
 {%- for attrib in all_attributes() %}{% set attr = attrib.name ~ ' ('~attrib.field_type~'):' ~ attrib.description| default(" ")%}
@@ -104,7 +104,8 @@ class {{name}}:
         if not bool(self._{{a.name}}):
             self._{{a.name}} = []
         if bool(x):
-            self._{{a.name}} += list(x)
+            if x != self._{{a.name}}:
+                self._{{a.name}} += list(x)
 {% if a.group_name != a.name %}
     @property
     def {{a.group_name}}(self):
