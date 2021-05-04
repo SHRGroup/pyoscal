@@ -57,7 +57,7 @@ class ParsedField:
         newcls.orig_name = newcls.name
         newcls.name = clean_name(newcls.name)
 
-        if ('min-occurs' in xml.attrib and xml.attrib['min-occurs'] > 0 ) \
+        if ('min-occurs' in xml.attrib and int(xml.attrib['min-occurs']) > 0 ) \
             or bool(xml.attrib.get('required') \
             ):  # required
             newcls.required = True
