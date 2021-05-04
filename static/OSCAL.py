@@ -14,6 +14,7 @@ class OSCAL:
 
         obj = parser.parse(filepath)
         self.add_model(obj)
+        return obj
 
     def add_model(self, obj):
         obj_type = type(obj).__name__
