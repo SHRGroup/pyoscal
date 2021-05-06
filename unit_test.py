@@ -8,7 +8,6 @@ from pyoscal.OSCAL import OSCAL  # pylint: disable=import-error # noqa: E402
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-
 class TestCatalog(unittest.TestCase):
 
     def createOSCAL(self):
