@@ -55,7 +55,7 @@ publish:
   dependencies:
     - build
   script:
-    - git submodule update
+    # - git submodule update
     - cd pyoscal/
     - git config --global user.email "${GITLAB_USER_EMAIL}"
     - git config --global user.name "${GITLAB_USER_ID}"
