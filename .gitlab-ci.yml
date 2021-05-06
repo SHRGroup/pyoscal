@@ -41,7 +41,7 @@ package:
     - pip install twine wheel
   script:
     - cd pyoscal
-    - sed -i "s/version=\"0\.9\..*\"/version=\"0\.9\.${CI_JOB_ID}\"/g" setup.py #update version
+    - sed -i "s/version='0\.9\..*'/version='0\.9\.${CI_JOB_ID}'/g" setup.py #update version
     - python setup.py bdist_wheel
     - python -m twine upload dist/*.whl --verbose
   only: # Only Publish Master on Main Repo (not forks)
