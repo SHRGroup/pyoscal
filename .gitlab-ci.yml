@@ -61,7 +61,7 @@ publish:
     - git config --global user.name "${GITLAB_USER_ID}"
     - git add pyoscal/
     - git commit -m "$(git log -1 --pretty=%B)"
-    - git push origin HEAD:master --force
+    - git push origin master 
   artifacts:
     when: always
     paths:
