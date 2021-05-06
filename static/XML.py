@@ -57,6 +57,10 @@ class OSCAL_XML(OSCAL_IO):
             '').strip()
         return str(joined)
 
+    def from_string(self, content):
+        root = etree.fromstring(content)
+        return self.objectify(root)
+
     def parse(self, filepath):
         parser = etree.XMLParser(
             load_dtd=True,

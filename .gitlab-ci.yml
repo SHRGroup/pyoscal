@@ -23,13 +23,28 @@ unittest:
   before_script:
     - pip install -r requirements.txt
   script:
-    - export PYTHONPATH="$PYTHONPATH:$(pwd)/pyoscal/"
-    - env
     - python unit_test.py
   artifacts:
     when: always
     paths:
       - "*"
+
+package:
+  stage: deploy
+  image: python:3
+  variables:
+    TWINE_REPOSITORY_URL: https://gitlab.com/api/v4/projects/25562350/packages/pypi
+    TWINE_USERNAME: $GITLAB_USER
+    TWINE_PASSWORD: $GITLAB_PASS
+  before_script:
+    - pip install twine wheel
+  script:
+    - cd pyoscal
+    - sed -i "s/version=\"0\.9\..*\"/version=\"0\.9\.${CI_JOB_ID}\"/g" setup.py #update version
+    - python setup.py bdist_wheel
+    - python -m twine upload dist/*.whl --verbose
+  only: # Only Publish Master on Main Repo (not forks)
+    - master@shrgroup/oss/python/pyoscal-builder
 
 publish:
   image:

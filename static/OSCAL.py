@@ -16,6 +16,13 @@ class OSCAL:
         self.add_model(obj)
         return obj
 
+    def parse_string(self, content, fmt='xml'):
+        if fmt == 'xml':
+            parser = OSCAL_XML()
+        obj = parser.from_string(content)
+        self.add_model(obj)
+        return obj
+
     def add_model(self, obj):
         obj_type = type(obj).__name__
         if obj_type not in self.objects:

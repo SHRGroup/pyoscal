@@ -11,6 +11,9 @@ class OSCAL_IO:
     def parse(self):
         pass
 
+    def from_string(self, content):
+        pass
+
     def objectify(self):
         pass
 
