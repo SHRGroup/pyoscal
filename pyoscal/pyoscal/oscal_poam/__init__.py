@@ -1,0 +1,11 @@
+import pyoscal.oscal_poam.Title
+import pyoscal.oscal_poam.Risk_Uuid
+import pyoscal.oscal_poam.Poam_Item
+import pyoscal.oscal_poam.Local_Definitions
+import pyoscal.oscal_poam.Uuid
+import pyoscal.oscal_poam.Plan_Of_Action_And_Milestones
+import pyoscal.oscal_poam.Related_Observation
+import pyoscal.oscal_poam.Description
+import pyoscal.oscal_poam.Origin
+import pyoscal.oscal_poam.Associated_Risk
+import pyoscal.oscal_poam.Observation_Uuid
