@@ -11,6 +11,7 @@ build:
   artifacts:
     when: always
     paths:
+      - oscal-content/
       - pyoscal/
 
 unittest:
