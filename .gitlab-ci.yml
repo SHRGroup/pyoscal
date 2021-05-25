@@ -2,6 +2,8 @@ build:
   image: python:3
   stage: build
   before_script:
+    - apt install -y git
+    - git submodule update --init --recursive
     - bash update_oscal.sh
     - pip install -r requirements.txt
   script:
