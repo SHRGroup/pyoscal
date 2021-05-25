@@ -183,7 +183,7 @@ def output_puml(outdir='.'):
 
 def main():
     """Main function.  finds files, parses them, creates modules,
-    creates __init__ copies static files over to the module destination
+    creates __init__ 
     """
 
     metaschema_root = 'OSCAL/src/metaschema'
@@ -226,10 +226,6 @@ def main():
             classinit.writelines(set(classinit_lines))
     with open(os.path.join(out_dir, '__init__.py'), 'w') as globalinit:
         globalinit.writelines(set(globalinit_lines))
-
-    static_files = [os.path.join('static', f) for f in os.listdir('static')]
-    for f in static_files:
-        shutil.copy(f, out_dir)
 
 
 if __name__ == "__main__":
