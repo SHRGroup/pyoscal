@@ -138,18 +138,6 @@ match on ID
                 self._matching += list(x)
 
 
-class Include_Control(Select_Control_By_Id):
-    def __init__(self, **kw):
-        super(Include_Control, self).__init__(**kw)
-        self.use_name = 'include_control'
-
-
-class Include_Controls(Select_Control_By_Id):
-    def __init__(self, **kw):
-        super(Include_Controls, self).__init__(**kw)
-        self.use_name = 'include_controls'
-
-
 class Exclude_Control(Select_Control_By_Id):
     def __init__(self, **kw):
         super(Exclude_Control, self).__init__(**kw)
@@ -160,3 +148,15 @@ class Exclude_Controls(Select_Control_By_Id):
     def __init__(self, **kw):
         super(Exclude_Controls, self).__init__(**kw)
         self.use_name = 'exclude_controls'
+
+
+class Include_Control(Select_Control_By_Id):
+    def __init__(self, **kw):
+        super(Include_Control, self).__init__(**kw)
+        self.use_name = 'include_control'
+
+
+class Include_Controls(Select_Control_By_Id):
+    def __init__(self, **kw):
+        super(Include_Controls, self).__init__(**kw)
+        self.use_name = 'include_controls'

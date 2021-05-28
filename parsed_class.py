@@ -1,8 +1,6 @@
-from lxml import objectify as etobjectify
-from lxml import etree
 from jinja2 import Template
 
-from parsed_common import *
+from parsed_common import clean_name, get_fieldText, has_child
 from parsed_field import ParsedField
 
 ns = {'': 'http://csrc.nist.gov/ns/oscal/metaschema/1.0'}
@@ -62,8 +60,6 @@ class ParsedClass:
 
         newcls.add_attributes()
         newcls.add_subcomponents()
-        # if len(newcls.all_attributes()) == 0 or
-        # xmlobject.tag.endswith('field'):
         if not newcls.has_attribute('prose'):
             newcls.attributes += [ParsedField().static_value()]
         return newcls

@@ -1,7 +1,4 @@
-from lxml import objectify as etobjectify
-from lxml import etree
-
-from parsed_common import *
+from parsed_common import clean_name, get_fieldText, has_child, ns
 
 
 class ParsedField:
@@ -57,9 +54,9 @@ class ParsedField:
         newcls.orig_name = newcls.name
         newcls.name = clean_name(newcls.name)
 
-        if ('min-occurs' in xml.attrib and int(xml.attrib['min-occurs']) > 0 ) \
-            or bool(xml.attrib.get('required') \
-            ):  # required
+        if (('min-occurs' in xml.attrib
+                and int(xml.attrib['min-occurs']) > 0)
+                or bool(xml.attrib.get('required'))):  # required
             newcls.required = True
 
         if has_child(xml, 'description'):
