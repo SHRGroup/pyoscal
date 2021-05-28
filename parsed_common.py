@@ -1,3 +1,5 @@
+from lxml import objectify as etobjectify
+from lxml import etree
 
 ns = {'': 'http://csrc.nist.gov/ns/oscal/metaschema/1.0'}
 

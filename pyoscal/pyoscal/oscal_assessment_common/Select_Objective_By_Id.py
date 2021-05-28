@@ -72,13 +72,13 @@ the control objective's identifier.
         self._prose = x
 
 
-class Include_Objective(Select_Objective_By_Id):
-    def __init__(self, **kw):
-        super(Include_Objective, self).__init__(**kw)
-        self.use_name = 'include_objective'
-
-
 class Exclude_Objective(Select_Objective_By_Id):
     def __init__(self, **kw):
         super(Exclude_Objective, self).__init__(**kw)
         self.use_name = 'exclude_objective'
+
+
+class Include_Objective(Select_Objective_By_Id):
+    def __init__(self, **kw):
+        super(Include_Objective, self).__init__(**kw)
+        self.use_name = 'include_objective'

@@ -2,14 +2,11 @@ from lxml import etree
 from jinja2 import Template
 
 from parsed_class import ParsedClass
-from parsed_common import *
+from parsed_common import clean_name, ns
 
 import os
-import shutil
-import sys
 
 xmlns = "http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-ns = {'': 'http://csrc.nist.gov/ns/oscal/metaschema/1.0'}
 
 processed_files = []
 package_imports = {}
@@ -181,9 +178,28 @@ def output_puml(outdir='.'):
         f.write(output)
 
 
+def create_importline(module, classes):
+    importline = []
+    importline += ["from pyoscal.{} import (".format(module)]
+    processed = []
+    line = "    "
+    for cls in classes:
+        if cls not in processed:
+            if len(line) + len(cls)+2 > 70:
+                importline += [line]
+                line = "    "
+            elif len(processed) > 0:
+                line += " "
+            line += "{},".format(cls)
+            processed += [cls]
+    importline += [line]
+    importline += [')\n']
+    return '\n'.join(importline)
+
+
 def main():
     """Main function.  finds files, parses them, creates modules,
-    creates __init__ 
+    creates __init__
     """
 
     metaschema_root = 'OSCAL/src/metaschema'
@@ -215,10 +231,14 @@ def main():
     # Write INITS
     globalinit_lines = []
     globalinit_lines += ["from pyoscal.OSCAL import *\n"]
-    for grp in contexts:
+    modules = list(contexts.keys())
+    modules.sort()
+    for grp in modules:
         globalinit_lines += ["from pyoscal.{} import *\n".format(grp)]
         classinit_lines = []
-        for classinit in contexts[grp]:
+        classes = contexts[grp]
+        classes.sort()
+        for classinit in classes:
             classinit_lines += [
                 "import pyoscal.{}.{}\n".format(grp, classinit)
             ]

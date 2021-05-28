@@ -1,7 +1,6 @@
-import os
-
 from .XML import OSCAL_XML
-from pyoscal import *
+from pyoscal import *  # noqa: F401 F403
+
 
 class OSCAL:
 

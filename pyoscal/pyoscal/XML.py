@@ -1,7 +1,6 @@
 
 from .Parser import OSCAL_IO
-from pyoscal import *
-
+from pyoscal import *  # noqa: F401,F403 # necessary for exec statements
 
 from lxml import etree
 from lxml import objectify as etobjectify
@@ -112,7 +111,10 @@ class OSCAL_XML(OSCAL_IO):
             for child in xmlobject:
                 childname = self.clean_name(self.get_tag(child)).title()
                 if childname.lower() in self.html_tags:
-                    prose_value += "<{0}>{1}</{0}>".format(self.get_tag(child),self.stringify(child))
+                    prose_value += "<{0}>{1}</{0}>".format(
+                        self.get_tag(child),
+                        self.stringify(child)
+                    )
                 x = self.objectify(child, contexts)
                 paramname = childname.lower()
                 if paramname in attributes:
@@ -135,6 +137,7 @@ class OSCAL_XML(OSCAL_IO):
                 "Failed on {}: {} ".format(
                     classname,
                     etree.tostring(xmlobject)))
+            print(e)
 
         return local_vars.get('newclass')
 

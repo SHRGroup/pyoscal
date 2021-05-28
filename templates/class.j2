@@ -1,7 +1,7 @@
 class {{name}}:
     """{{formal_name}}
 
-    {{description | default("", true) | wordwrap(70)}}
+    {{description | default("No Description Provided", true) | wordwrap(70)}}
 
     Attributes:
 {%- for attrib in all_attributes() %}{% set attr = attrib.name ~ ' ('~attrib.field_type~'):' ~ attrib.description| default(" ")%}
