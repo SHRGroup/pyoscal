@@ -6,14 +6,14 @@ control. Each security or privacy control within the Catalog is
 defined by a distinct control instance.
 
     Attributes:
-        id (NCName):A unique identifier for a specific control
+        id (token):A unique identifier for a specific control
 instance that can be used to reference the control in other
 OSCAL documents. This identifier's uniqueness is document
 scoped and is intended to be consistent for the same control
 across minor revisions of the document.
 
-        oscal_class (NCName):A textual label that provides a sub-
-type or characterization of the control.
+        oscal_class (token):A textual label that provides a sub-type
+or characterization of the control.
 
         prose (str):Default value holder for raw data in texts
 

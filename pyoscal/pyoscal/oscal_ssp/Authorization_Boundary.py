@@ -14,7 +14,7 @@ authorization boundary.
 
         link (ARRAY):
 
-        diagram (BY_KEY):
+        diagram (ARRAY):
 
         remarks (markup-multiline):Commentary about the system's
 authorization boundary that enhances the diagram.

@@ -26,7 +26,7 @@ business purpose of the component.
         status (str):Describes the operational status of the system
 component.
 
-        responsible_role (BY_KEY):
+        responsible_role (ARRAY):
 
         protocol (ARRAY):
 
@@ -37,6 +37,7 @@ component.
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
         "uuid",

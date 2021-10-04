@@ -10,15 +10,15 @@ instance. This identifier's uniqueness is document scoped
 and is intended to be consistent for the same part across
 minor revisions of the document.
 
-        name (NCName):A textual label that uniquely identifies the
+        name (token):A textual label that uniquely identifies the
 part's semantic type.
 
         ns (uri):A namespace qualifying the part's name. This allows
 different organizations to associate distinct semantics with
 the same name.
 
-        oscal_class (NCName):A textual label that provides a sub-
-type or characterization of the part's
+        oscal_class (token):A textual label that provides a sub-type
+or characterization of the part's
 
         title (markup-line):A name given to the part, which may be
 used by a tool for display and navigation.

@@ -15,9 +15,9 @@ document is revised.
 
         import_component_definition (ARRAY):
 
-        component (BY_KEY):
+        component (ARRAY):
 
-        capability (BY_KEY):
+        capability (ARRAY):
 
         back_matter (str):
 

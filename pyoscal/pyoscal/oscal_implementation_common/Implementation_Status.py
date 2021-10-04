@@ -4,7 +4,7 @@ class Implementation_Status:
     Indicates the degree to which the a given control is implemented.
 
     Attributes:
-        state (NCName):Identifies the implementation status of the
+        state (token):Identifies the implementation status of the
 control or control objective.
 
         prose (str):Default value holder for raw data in texts
@@ -16,6 +16,7 @@ control or control objective.
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
         "state",

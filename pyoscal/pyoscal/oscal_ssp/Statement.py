@@ -17,7 +17,9 @@ resource across revisions of the document.
 
         link (ARRAY):
 
-        by_component (BY_KEY):
+        responsible_role (ARRAY):
+
+        by_component (ARRAY):
 
         remarks (str):
 
@@ -36,6 +38,7 @@ resource across revisions of the document.
         "prose",
         "oscal_property",
         "link",
+        "responsible_role",
         "by_component",
         "remarks",
     ]
@@ -48,6 +51,7 @@ resource across revisions of the document.
         prose=None,
         oscal_property=None,
         link=None,
+        responsible_role=None,
         by_component=None,
         remarks=None,
     ):
@@ -66,6 +70,9 @@ resource across revisions of the document.
         self._link = None
         self.link = \
             link
+        self._responsible_role = None
+        self.responsible_role = \
+            responsible_role
         self._by_component = None
         self.by_component = \
             by_component
@@ -77,6 +84,8 @@ resource across revisions of the document.
             self.oscal_property = []
         if link is None:
             self.link = []
+        if responsible_role is None:
+            self.responsible_role = []
         if by_component is None:
             self.by_component = []
 
@@ -102,6 +111,9 @@ resource across revisions of the document.
             link=obj.get(
                 'link',
                 None),
+            responsible_role=obj.get(
+                'responsible_role',
+                None),
             by_component=obj.get(
                 'by_component',
                 None),
@@ -113,6 +125,8 @@ resource across revisions of the document.
             obj.get('props')
         newcls.link = \
             obj.get('links')
+        newcls.responsible_role = \
+            obj.get('responsible_roles')
         newcls.by_component = \
             obj.get('by_components')
         newcls.oscal_property = \
@@ -209,6 +223,28 @@ resource across revisions of the document.
     @links.setter
     def links(self, x):
         self.link(x)
+
+    @property
+    def responsible_role(self):
+        return self._responsible_role
+
+    @responsible_role.setter
+    def responsible_role(self, x):
+        if not isinstance(x, list) and x is not None:
+            x = [x]
+        if not bool(self._responsible_role):
+            self._responsible_role = []
+        if bool(x):
+            if x != self._responsible_role:
+                self._responsible_role += list(x)
+
+    @property
+    def responsible_roles(self):
+        return self._responsible_role
+
+    @responsible_roles.setter
+    def responsible_roles(self, x):
+        self.responsible_role(x)
 
     @property
     def by_component(self):

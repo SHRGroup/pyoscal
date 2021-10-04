@@ -5,12 +5,12 @@ class Parameter:
 in a control.
 
     Attributes:
-        id (NCName):A unique identifier for a specific parameter
+        id (token):A unique identifier for a specific parameter
 instance. This identifier's uniqueness is document scoped
 and is intended to be consistent for the same parameter
 across minor revisions of the document.
 
-        oscal_class (NCName):A textual label that provides a
+        oscal_class (token):A textual label that provides a
 characterization of the parameter.
 
         depends_on (str):

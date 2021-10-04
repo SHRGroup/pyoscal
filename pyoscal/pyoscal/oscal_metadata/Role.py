@@ -5,10 +5,10 @@ class Role:
 specific situation.
 
     Attributes:
-        id (NCName):A unique identifier for a specific role
-instance. This identifier's uniqueness is document scoped
-and is intended to be consistent for the same role across
-minor revisions of the document.
+        id (token):A unique identifier for a specific role instance.
+This identifier's uniqueness is document scoped and is
+intended to be consistent for the same role across minor
+revisions of the document.
 
         prose (str):Default value holder for raw data in texts
 

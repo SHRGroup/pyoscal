@@ -1,5 +1,5 @@
 class Related_Response:
-    """Action Reference
+    """Risk Response Reference
 
     Identifies an individual risk response that this log entry is for.
 

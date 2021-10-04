@@ -7,7 +7,7 @@ with a series of assessment actions.
     Attributes:
         uuid (uuid):Uniquely identifies this assessment task.
 
-        type (NCName):The type of task.
+        type (token):The type of task.
 
         prose (str):Default value holder for raw data in texts
 
@@ -33,7 +33,7 @@ activity to be performed as part of a task.
 
         subject (ARRAY):
 
-        responsible_role (BY_KEY):
+        responsible_role (ARRAY):
 
         remarks (str):
 

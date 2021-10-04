@@ -6,7 +6,7 @@ responsibility for performing a referenced role in the context of the
 containing object.
 
     Attributes:
-        role_id (NCName):The role that the party is responsible for.
+        role_id (token):The role that the party is responsible for.
 
         prose (str):Default value holder for raw data in texts
 

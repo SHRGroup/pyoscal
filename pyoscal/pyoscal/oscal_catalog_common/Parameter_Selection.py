@@ -4,8 +4,9 @@ class Parameter_Selection:
     Presenting a choice among alternatives
 
     Attributes:
-        how_many (string):Describes the number of selections that
-must occur.
+        how_many (token):Describes the number of selections that
+must occur. Without this setting, only one value should be
+assumed to be permitted.
 
         prose (str):Default value holder for raw data in texts
 
@@ -68,7 +69,8 @@ must occur.
 
     @property
     def how_many(self):
-        """Describes the number of selections that must occur.
+        """Describes the number of selections that must occur. Without this
+        setting, only one value should be assumed to be permitted.
         """
         return self._how_many
 

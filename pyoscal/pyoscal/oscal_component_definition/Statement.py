@@ -6,8 +6,10 @@ class Statement:
     Attributes:
         statement_id (str):
 
-        uuid (uuid):A unique identifier for a specific control
-implementation.
+        uuid (uuid):A globally unique identifier that can be used to
+reference this control statement entry elsewhere in an OSCAL
+document. A UUID should be consistently used for a given
+resource across revisions of the document.
 
         prose (str):Default value holder for raw data in texts
 
@@ -19,7 +21,7 @@ or capability.
 
         link (ARRAY):
 
-        responsible_role (BY_KEY):
+        responsible_role (ARRAY):
 
         remarks (str):
 
@@ -138,7 +140,10 @@ or capability.
 
     @property
     def uuid(self):
-        """A unique identifier for a specific control implementation.
+        """A globally unique identifier that can be used to reference this
+        control statement entry elsewhere in an OSCAL document. A UUID
+        should be consistently used for a given resource across revisions of
+        the document.
         """
         return self._uuid
 

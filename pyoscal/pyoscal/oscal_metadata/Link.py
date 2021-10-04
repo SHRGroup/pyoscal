@@ -7,7 +7,7 @@ class Link:
         href (uri-reference):A resolvable URL reference to a
 resource.
 
-        rel (NCName):Describes the type of relationship provided by
+        rel (token):Describes the type of relationship provided by
 the link. This can be an indicator of the link's purpose.
 
         media_type (str):

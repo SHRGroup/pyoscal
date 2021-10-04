@@ -6,7 +6,7 @@ class Attestation:
     Attributes:
         prose (str):Default value holder for raw data in texts
 
-        responsible_party (BY_KEY):
+        responsible_party (ARRAY):
 
         part (ARRAY):
 

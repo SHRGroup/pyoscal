@@ -7,8 +7,8 @@ objective is satisfied.
     Attributes:
         type (string):Identifies the type of the target.
 
-        id_ref (NCName):Identifies the specific target qualified by
-the
+        target_id (token):Identifies the specific target qualified
+by the
 
         prose (str):Default value holder for raw data in texts
 
@@ -22,8 +22,8 @@ an objective is satisfied.
 
         link (ARRAY):
 
-        status (NCName):A brief indication as to whether the
-objective is satisfied or not within a given system.
+        status (str):A determination of if the objective is
+satisfied or not within a given system.
 
         implementation_status (str):
 
@@ -38,7 +38,7 @@ objective is satisfied or not within a given system.
     ]
     parameters = [
         "type",
-        "id_ref",
+        "target_id",
     ]
     subcomponents = [
         "prose",
@@ -54,7 +54,7 @@ objective is satisfied or not within a given system.
     def __init__(
         self,
         type,
-        id_ref,
+        target_id,
         status,
         use_name='finding-target',
         prose=None,
@@ -68,9 +68,9 @@ objective is satisfied or not within a given system.
         self._type = None
         self.type = \
             type
-        self._id_ref = None
-        self.id_ref = \
-            id_ref
+        self._target_id = None
+        self.target_id = \
+            target_id
         self._prose = None
         self.prose = \
             prose
@@ -111,8 +111,8 @@ objective is satisfied or not within a given system.
             type=obj.get(
                 'type',
                 None),
-            id_ref=obj.get(
-                'id_ref',
+            target_id=obj.get(
+                'target_id',
                 None),
             prose=obj.get(
                 'prose',
@@ -158,14 +158,14 @@ objective is satisfied or not within a given system.
         self._type = x
 
     @property
-    def id_ref(self):
+    def target_id(self):
         """Identifies the specific target qualified by the
         """
-        return self._id_ref
+        return self._target_id
 
-    @id_ref.setter
-    def id_ref(self, x):
-        self._id_ref = x
+    @target_id.setter
+    def target_id(self, x):
+        self._target_id = x
 
     @property
     def prose(self):
@@ -200,8 +200,8 @@ objective is satisfied or not within a given system.
 
     @property
     def status(self):
-        """A brief indication as to whether the objective is satisfied or not
-        within a given system.
+        """A determination of if the objective is satisfied or not within a
+        given system.
         """
         return self._status
 

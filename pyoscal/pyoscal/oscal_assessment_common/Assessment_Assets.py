@@ -7,7 +7,7 @@ assessment team, scanning tools, and assumptions.
     Attributes:
         prose (str):Default value holder for raw data in texts
 
-        component (BY_KEY):
+        component (ARRAY):
 
         assessment_platform (ARRAY):Used to represent the toolset
 used to perform aspects of the assessment.

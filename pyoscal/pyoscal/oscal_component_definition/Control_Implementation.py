@@ -19,7 +19,7 @@ component or capability.
 
         link (ARRAY):
 
-        set_parameter (BY_KEY):
+        set_parameter (ARRAY):
 
         implemented_requirement (ARRAY):
 

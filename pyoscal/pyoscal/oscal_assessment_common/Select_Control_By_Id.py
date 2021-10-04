@@ -115,16 +115,10 @@ specificity identified statements.
         self.statement_id(x)
 
 
-class Exclude_Control(Select_Control_By_Id):
+class Include_Controls(Select_Control_By_Id):
     def __init__(self, **kw):
-        super(Exclude_Control, self).__init__(**kw)
-        self.use_name = 'exclude_control'
-
-
-class Exclude_Controls(Select_Control_By_Id):
-    def __init__(self, **kw):
-        super(Exclude_Controls, self).__init__(**kw)
-        self.use_name = 'exclude_controls'
+        super(Include_Controls, self).__init__(**kw)
+        self.use_name = 'include_controls'
 
 
 class Include_Control(Select_Control_By_Id):
@@ -133,7 +127,13 @@ class Include_Control(Select_Control_By_Id):
         self.use_name = 'include_control'
 
 
-class Include_Controls(Select_Control_By_Id):
+class Exclude_Controls(Select_Control_By_Id):
     def __init__(self, **kw):
-        super(Include_Controls, self).__init__(**kw)
-        self.use_name = 'include_controls'
+        super(Exclude_Controls, self).__init__(**kw)
+        self.use_name = 'exclude_controls'
+
+
+class Exclude_Control(Select_Control_By_Id):
+    def __init__(self, **kw):
+        super(Exclude_Control, self).__init__(**kw)
+        self.use_name = 'exclude_control'

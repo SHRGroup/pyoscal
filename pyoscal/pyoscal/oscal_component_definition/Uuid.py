@@ -1,7 +1,10 @@
 class Uuid:
-    """Control Statement Implementation Identifier
+    """Control Statement Reference Universally Unique Identifier
 
-    A unique identifier for a specific control implementation.
+    A globally unique identifier that can be used to reference this
+control statement entry elsewhere in an OSCAL document. A UUID should
+be consistently used for a given resource across revisions of the
+document.
 
     Attributes:
         prose (str):Default value holder for raw data in texts

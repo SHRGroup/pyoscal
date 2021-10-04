@@ -20,11 +20,11 @@ component or capability.
 
         link (ARRAY):
 
-        responsible_role (BY_KEY):
+        set_parameter (ARRAY):
 
-        set_parameter (BY_KEY):
+        responsible_role (ARRAY):
 
-        statement (BY_KEY):
+        statement (ARRAY):
 
         remarks (str):
 
@@ -43,8 +43,8 @@ component or capability.
         "description",
         "oscal_property",
         "link",
-        "responsible_role",
         "set_parameter",
+        "responsible_role",
         "statement",
         "remarks",
     ]
@@ -52,14 +52,14 @@ component or capability.
     def __init__(
         self,
         uuid,
+        control_id,
         description,
         use_name='implemented-requirement',
-        control_id=None,
         prose=None,
         oscal_property=None,
         link=None,
-        responsible_role=None,
         set_parameter=None,
+        responsible_role=None,
         statement=None,
         remarks=None,
     ):
@@ -81,12 +81,12 @@ component or capability.
         self._link = None
         self.link = \
             link
-        self._responsible_role = None
-        self.responsible_role = \
-            responsible_role
         self._set_parameter = None
         self.set_parameter = \
             set_parameter
+        self._responsible_role = None
+        self.responsible_role = \
+            responsible_role
         self._statement = None
         self.statement = \
             statement
@@ -98,10 +98,10 @@ component or capability.
             self.oscal_property = []
         if link is None:
             self.link = []
-        if responsible_role is None:
-            self.responsible_role = []
         if set_parameter is None:
             self.set_parameter = []
+        if responsible_role is None:
+            self.responsible_role = []
         if statement is None:
             self.statement = []
 
@@ -130,11 +130,11 @@ component or capability.
             link=obj.get(
                 'link',
                 None),
-            responsible_role=obj.get(
-                'responsible_role',
-                None),
             set_parameter=obj.get(
                 'set_parameter',
+                None),
+            responsible_role=obj.get(
+                'responsible_role',
                 None),
             statement=obj.get(
                 'statement',
@@ -147,10 +147,10 @@ component or capability.
             obj.get('props')
         newcls.link = \
             obj.get('links')
-        newcls.responsible_role = \
-            obj.get('responsible_roles')
         newcls.set_parameter = \
             obj.get('set_parameters')
+        newcls.responsible_role = \
+            obj.get('responsible_roles')
         newcls.statement = \
             obj.get('statements')
         newcls.oscal_property = \
@@ -257,28 +257,6 @@ component or capability.
         self.link(x)
 
     @property
-    def responsible_role(self):
-        return self._responsible_role
-
-    @responsible_role.setter
-    def responsible_role(self, x):
-        if not isinstance(x, list) and x is not None:
-            x = [x]
-        if not bool(self._responsible_role):
-            self._responsible_role = []
-        if bool(x):
-            if x != self._responsible_role:
-                self._responsible_role += list(x)
-
-    @property
-    def responsible_roles(self):
-        return self._responsible_role
-
-    @responsible_roles.setter
-    def responsible_roles(self, x):
-        self.responsible_role(x)
-
-    @property
     def set_parameter(self):
         return self._set_parameter
 
@@ -299,6 +277,28 @@ component or capability.
     @set_parameters.setter
     def set_parameters(self, x):
         self.set_parameter(x)
+
+    @property
+    def responsible_role(self):
+        return self._responsible_role
+
+    @responsible_role.setter
+    def responsible_role(self, x):
+        if not isinstance(x, list) and x is not None:
+            x = [x]
+        if not bool(self._responsible_role):
+            self._responsible_role = []
+        if bool(x):
+            if x != self._responsible_role:
+                self._responsible_role += list(x)
+
+    @property
+    def responsible_roles(self):
+        return self._responsible_role
+
+    @responsible_roles.setter
+    def responsible_roles(self, x):
+        self.responsible_role(x)
 
     @property
     def statement(self):

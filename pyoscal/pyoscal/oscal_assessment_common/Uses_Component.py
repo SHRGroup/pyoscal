@@ -13,7 +13,7 @@ implemented as part of an inventory item.
 
         link (ARRAY):
 
-        responsible_party (BY_KEY):
+        responsible_party (ARRAY):
 
         remarks (str):
 

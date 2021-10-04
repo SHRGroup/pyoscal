@@ -32,7 +32,7 @@ be used by a tool for display and navigation.
 
         party (ARRAY):
 
-        responsible_party (BY_KEY):
+        responsible_party (ARRAY):
 
         remarks (str):
 

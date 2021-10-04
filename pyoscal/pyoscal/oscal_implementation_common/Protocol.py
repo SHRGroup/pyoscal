@@ -24,6 +24,7 @@ the appropriate "service name" from the
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
         "uuid",

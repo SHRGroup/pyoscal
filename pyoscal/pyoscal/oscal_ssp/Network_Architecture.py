@@ -14,7 +14,7 @@ network architecture.
 
         link (ARRAY):
 
-        diagram (BY_KEY):
+        diagram (ARRAY):
 
         remarks (str):
 

@@ -227,4 +227,5 @@ revised.
 
     @groups.setter
     def groups(self, x):
+        print(">>>{x}")
         self.group(x)

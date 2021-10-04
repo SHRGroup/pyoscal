@@ -5,18 +5,17 @@ class Remove:
 aspects of the object that must all match.
 
     Attributes:
-        name_ref (NCName):Identify items to remove by matching their
+        by_name (token):Identify items to remove by matching their
 assigned name
 
-        class_ref (NCName):Identify items to remove by matching
-their
+        by_class (token):Identify items to remove by matching their
 
-        id_ref (NCName):Identify items to remove indicated by their
+        by_id (token):Identify items to remove indicated by their
 
-        item_name (NCName):Identify items to remove by the name of
+        by_item_name (token):Identify items to remove by the name of
 the item's information element name, e.g.
 
-        ns_ref (NCName):Identify items to remove by the item's
+        by_ns (token):Identify items to remove by the item's
 
         prose (str):Default value holder for raw data in texts
 
@@ -28,11 +27,11 @@ the item's information element name, e.g.
         "oscal-catalog-common",
     ]
     parameters = [
-        "name_ref",
-        "class_ref",
-        "id_ref",
-        "item_name",
-        "ns_ref",
+        "by_name",
+        "by_class",
+        "by_id",
+        "by_item_name",
+        "by_ns",
     ]
     subcomponents = [
         "prose",
@@ -41,28 +40,28 @@ the item's information element name, e.g.
     def __init__(
         self,
         use_name='remove',
-        name_ref=None,
-        class_ref=None,
-        id_ref=None,
-        item_name=None,
-        ns_ref=None,
+        by_name=None,
+        by_class=None,
+        by_id=None,
+        by_item_name=None,
+        by_ns=None,
         prose=None,
     ):
-        self._name_ref = None
-        self.name_ref = \
-            name_ref
-        self._class_ref = None
-        self.class_ref = \
-            class_ref
-        self._id_ref = None
-        self.id_ref = \
-            id_ref
-        self._item_name = None
-        self.item_name = \
-            item_name
-        self._ns_ref = None
-        self.ns_ref = \
-            ns_ref
+        self._by_name = None
+        self.by_name = \
+            by_name
+        self._by_class = None
+        self.by_class = \
+            by_class
+        self._by_id = None
+        self.by_id = \
+            by_id
+        self._by_item_name = None
+        self.by_item_name = \
+            by_item_name
+        self._by_ns = None
+        self.by_ns = \
+            by_ns
         self._prose = None
         self.prose = \
             prose
@@ -75,20 +74,20 @@ the item's information element name, e.g.
     @classmethod
     def fromDict(cls, obj):
         newcls = cls(
-            name_ref=obj.get(
-                'name_ref',
+            by_name=obj.get(
+                'by_name',
                 None),
-            class_ref=obj.get(
-                'class_ref',
+            by_class=obj.get(
+                'by_class',
                 None),
-            id_ref=obj.get(
-                'id_ref',
+            by_id=obj.get(
+                'by_id',
                 None),
-            item_name=obj.get(
-                'item_name',
+            by_item_name=obj.get(
+                'by_item_name',
                 None),
-            ns_ref=obj.get(
-                'ns_ref',
+            by_ns=obj.get(
+                'by_ns',
                 None),
             prose=obj.get(
                 'prose',
@@ -97,55 +96,55 @@ the item's information element name, e.g.
         return newcls
 
     @property
-    def name_ref(self):
+    def by_name(self):
         """Identify items to remove by matching their assigned name
         """
-        return self._name_ref
+        return self._by_name
 
-    @name_ref.setter
-    def name_ref(self, x):
-        self._name_ref = x
+    @by_name.setter
+    def by_name(self, x):
+        self._by_name = x
 
     @property
-    def class_ref(self):
+    def by_class(self):
         """Identify items to remove by matching their
         """
-        return self._class_ref
+        return self._by_class
 
-    @class_ref.setter
-    def class_ref(self, x):
-        self._class_ref = x
+    @by_class.setter
+    def by_class(self, x):
+        self._by_class = x
 
     @property
-    def id_ref(self):
+    def by_id(self):
         """Identify items to remove indicated by their
         """
-        return self._id_ref
+        return self._by_id
 
-    @id_ref.setter
-    def id_ref(self, x):
-        self._id_ref = x
+    @by_id.setter
+    def by_id(self, x):
+        self._by_id = x
 
     @property
-    def item_name(self):
+    def by_item_name(self):
         """Identify items to remove by the name of the item's information
         element name, e.g.
         """
-        return self._item_name
+        return self._by_item_name
 
-    @item_name.setter
-    def item_name(self, x):
-        self._item_name = x
+    @by_item_name.setter
+    def by_item_name(self, x):
+        self._by_item_name = x
 
     @property
-    def ns_ref(self):
+    def by_ns(self):
         """Identify items to remove by the item's
         """
-        return self._ns_ref
+        return self._by_ns
 
-    @ns_ref.setter
-    def ns_ref(self, x):
-        self._ns_ref = x
+    @by_ns.setter
+    def by_ns(self, x):
+        self._by_ns = x
 
     @property
     def prose(self):

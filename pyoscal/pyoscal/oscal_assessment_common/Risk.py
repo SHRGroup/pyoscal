@@ -14,7 +14,8 @@ consistently used for a given risk across revisions.
         title (markup-line):The title for this risk.
 
         description (markup-multiline):A human-readable summary of
-what was identified regarding the risk.
+the identified risk, to include a statement of how the risk
+impacts the system.
 
         statement (markup-multiline):An summary of impact for how
 the risk affects the system.
@@ -23,7 +24,7 @@ the risk affects the system.
 
         link (ARRAY):
 
-        status (NCName):Describes the status of the associated risk.
+        status (token):Describes the status of the associated risk.
 
         origin (ARRAY):
 
@@ -272,7 +273,8 @@ finding.
 
     @property
     def description(self):
-        """A human-readable summary of what was identified regarding the risk.
+        """A human-readable summary of the identified risk, to include a
+        statement of how the risk impacts the system.
         """
         return self._description
 

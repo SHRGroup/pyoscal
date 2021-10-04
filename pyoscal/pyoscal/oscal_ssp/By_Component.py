@@ -22,7 +22,7 @@ implemented within the referenced system component.
 
         link (ARRAY):
 
-        set_parameter (BY_KEY):
+        set_parameter (ARRAY):
 
         implementation_status (str):
 
@@ -35,7 +35,7 @@ inherited by a leveraging system.
         satisfied (ARRAY):Describes how this system satisfies a
 responsibility imposed by a leveraged system.
 
-        responsible_role (BY_KEY):
+        responsible_role (ARRAY):
 
         remarks (str):
 
@@ -186,7 +186,7 @@ responsibility imposed by a leveraged system.
         newcls.link = \
             obj.get('links')
         newcls.set_parameter = \
-            obj.get('parameter_settings')
+            obj.get('set_parameters')
         newcls.inherited = \
             obj.get('inherited')
         newcls.satisfied = \
@@ -337,11 +337,11 @@ responsibility imposed by a leveraged system.
                 self._set_parameter += list(x)
 
     @property
-    def parameter_settings(self):
+    def set_parameters(self):
         return self._set_parameter
 
-    @parameter_settings.setter
-    def parameter_settings(self, x):
+    @set_parameters.setter
+    def set_parameters(self, x):
         self.set_parameter(x)
 
     @property

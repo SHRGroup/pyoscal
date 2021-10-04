@@ -1,7 +1,7 @@
 class Start:
     """Start
 
-    Identifies the start date and time of an event.
+    Identifies the start date and time of the event.
 
     Attributes:
         prose (str):Default value holder for raw data in texts

@@ -11,7 +11,7 @@ number in a port range
         end (nonNegativeInteger):Indicates the ending port number in
 a port range
 
-        transport (NCName):Indicates the transport type.
+        transport (token):Indicates the transport type.
 
         prose (str):Default value holder for raw data in texts
 
@@ -20,6 +20,7 @@ a port range
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
         "start",

@@ -6,9 +6,8 @@ class Risk_Log:
     Attributes:
         prose (str):Default value holder for raw data in texts
 
-        entry (ARRAY):Identifies the result of a task that occurred
-as part of executing an assessment plan or an assessment
-event that occurred in producing the assessment results.
+        entry (ARRAY):Identifies an individual risk response that
+occurred as part of managing an identified risk.
 
     """
 
@@ -70,9 +69,8 @@ event that occurred in producing the assessment results.
 
     @property
     def entry(self):
-        """Identifies the result of a task that occurred as part of executing
-        an assessment plan or an assessment event that occurred in producing
-        the assessment results.
+        """Identifies an individual risk response that occurred as part of
+        managing an identified risk.
         """
         return self._entry
 
