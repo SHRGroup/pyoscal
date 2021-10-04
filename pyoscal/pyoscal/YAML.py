@@ -22,15 +22,14 @@ class OSCAL_YAML(OSCAL_IO):
 
         return name
 
-    def stringify(self, xmlobject):
-        return
+    def stringify(self, obj):
+        return str(obj)
 
     def from_string(self, content):
         root = yaml.safe_load(content)
         top_key = list(root.keys())[0]
         name = self.clean_name(top_key).title()
         return self.to_object(root.get(top_key), name=name)
-        # return self.objectify(root)
 
     def parse(self, filepath):
         with open(filepath, encoding="utf8") as f:
@@ -55,7 +54,6 @@ class OSCAL_YAML(OSCAL_IO):
                 contexts = [self.class_base(self.find_class(name))]
             contexts = self.dedup(contexts + class_contexts)
         else:
-            print(f"Returning1: {obj}")
             return self.stringify(obj)
 
         attributes = {}
