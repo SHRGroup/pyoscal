@@ -9,8 +9,6 @@ import sys
 
 class OSCAL_YAML(OSCAL_IO):
 
-
-
     html_tags = ['a', 'em', 'p', 'q', 'insert', 'ol', 'li']
 
     def clean_name(self, name):

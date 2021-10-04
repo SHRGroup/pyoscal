@@ -1,6 +1,5 @@
 import os
 import sys
-import re
 import unittest
 
 sys.path.insert(0, './pyoscal/')
@@ -33,6 +32,7 @@ class TestCatalog(unittest.TestCase):
         self.assertEqual(
             str(catalog.metadata.title),
             'Sample Security Catalog *for Demonstration* and Testing')
+
 
 if __name__ == '__main__':
     unittest.main()
