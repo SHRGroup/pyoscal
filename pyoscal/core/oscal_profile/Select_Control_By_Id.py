@@ -138,14 +138,17 @@ match on ID
                 self._matching += list(x)
 
 
-class Exclude_Control(Select_Control_By_Id):
+class Include_Controls(Select_Control_By_Id):
     def __init__(self, **kw):
+<<<<<<< HEAD:pyoscal/core/oscal_profile/Select_Control_By_Id.py
         super(Exclude_Control, self).__init__(**kw)
         self.use_name = 'exclude_control'
 
 
 class Include_Controls(Select_Control_By_Id):
     def __init__(self, **kw):
+=======
+>>>>>>> pyoscal-master:pyoscal/pyoscal/oscal_profile/Select_Control_By_Id.py
         super(Include_Controls, self).__init__(**kw)
         self.use_name = 'include_controls'
 
@@ -160,3 +163,12 @@ class Exclude_Controls(Select_Control_By_Id):
     def __init__(self, **kw):
         super(Exclude_Controls, self).__init__(**kw)
         self.use_name = 'exclude_controls'
+<<<<<<< HEAD:pyoscal/core/oscal_profile/Select_Control_By_Id.py
+=======
+
+
+class Exclude_Control(Select_Control_By_Id):
+    def __init__(self, **kw):
+        super(Exclude_Control, self).__init__(**kw)
+        self.use_name = 'exclude_control'
+>>>>>>> pyoscal-master:pyoscal/pyoscal/oscal_profile/Select_Control_By_Id.py

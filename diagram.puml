@@ -968,14 +968,14 @@ package oscal_assessment_common {
         {method} fromDict(obj)
     }
     
-    class "Exclude_Control" as oscal_assessment_common_select_control_by_id_Exclude_Control 
-    oscal_assessment_common_select_control_by_id <|-- oscal_assessment_common_select_control_by_id_Exclude_Control : Inherits
     class "Include_Controls" as oscal_assessment_common_select_control_by_id_Include_Controls 
     oscal_assessment_common_select_control_by_id <|-- oscal_assessment_common_select_control_by_id_Include_Controls : Inherits
     class "Include_Control" as oscal_assessment_common_select_control_by_id_Include_Control 
     oscal_assessment_common_select_control_by_id <|-- oscal_assessment_common_select_control_by_id_Include_Control : Inherits
     class "Exclude_Controls" as oscal_assessment_common_select_control_by_id_Exclude_Controls 
     oscal_assessment_common_select_control_by_id <|-- oscal_assessment_common_select_control_by_id_Exclude_Controls : Inherits
+    class "Exclude_Control" as oscal_assessment_common_select_control_by_id_Exclude_Control 
+    oscal_assessment_common_select_control_by_id <|-- oscal_assessment_common_select_control_by_id_Exclude_Control : Inherits
     class "Statement_Id" as oscal_assessment_common_statement_id {
         prose : str
         {method} fromDict(obj)
@@ -1867,14 +1867,14 @@ package oscal_profile {
         {method} fromDict(obj)
     }
     
-    class "Exclude_Control" as oscal_profile_select_control_by_id_Exclude_Control 
-    oscal_profile_select_control_by_id <|-- oscal_profile_select_control_by_id_Exclude_Control : Inherits
     class "Include_Controls" as oscal_profile_select_control_by_id_Include_Controls 
     oscal_profile_select_control_by_id <|-- oscal_profile_select_control_by_id_Include_Controls : Inherits
     class "Include_Control" as oscal_profile_select_control_by_id_Include_Control 
     oscal_profile_select_control_by_id <|-- oscal_profile_select_control_by_id_Include_Control : Inherits
     class "Exclude_Controls" as oscal_profile_select_control_by_id_Exclude_Controls 
     oscal_profile_select_control_by_id <|-- oscal_profile_select_control_by_id_Exclude_Controls : Inherits
+    class "Exclude_Control" as oscal_profile_select_control_by_id_Exclude_Control 
+    oscal_profile_select_control_by_id <|-- oscal_profile_select_control_by_id_Exclude_Control : Inherits
     class "With_Id" as oscal_profile_with_id {
         prose : str
         {method} fromDict(obj)
