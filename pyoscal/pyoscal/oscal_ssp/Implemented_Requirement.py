@@ -17,13 +17,13 @@ given resource across revisions of the document.
 
         link (ARRAY):
 
-        set_parameter (BY_KEY):
+        set_parameter (ARRAY):
 
-        responsible_role (BY_KEY):
+        responsible_role (ARRAY):
 
-        by_component (BY_KEY):
+        statement (ARRAY):
 
-        statement (BY_KEY):
+        by_component (ARRAY):
 
         remarks (str):
 
@@ -44,8 +44,8 @@ given resource across revisions of the document.
         "link",
         "set_parameter",
         "responsible_role",
-        "by_component",
         "statement",
+        "by_component",
         "remarks",
     ]
 
@@ -59,8 +59,8 @@ given resource across revisions of the document.
         link=None,
         set_parameter=None,
         responsible_role=None,
-        by_component=None,
         statement=None,
+        by_component=None,
         remarks=None,
     ):
         self._uuid = None
@@ -84,12 +84,12 @@ given resource across revisions of the document.
         self._responsible_role = None
         self.responsible_role = \
             responsible_role
-        self._by_component = None
-        self.by_component = \
-            by_component
         self._statement = None
         self.statement = \
             statement
+        self._by_component = None
+        self.by_component = \
+            by_component
         self._remarks = None
         self.remarks = \
             remarks
@@ -102,10 +102,10 @@ given resource across revisions of the document.
             self.set_parameter = []
         if responsible_role is None:
             self.responsible_role = []
-        if by_component is None:
-            self.by_component = []
         if statement is None:
             self.statement = []
+        if by_component is None:
+            self.by_component = []
 
     def __str__(self):
 
@@ -135,11 +135,11 @@ given resource across revisions of the document.
             responsible_role=obj.get(
                 'responsible_role',
                 None),
-            by_component=obj.get(
-                'by_component',
-                None),
             statement=obj.get(
                 'statement',
+                None),
+            by_component=obj.get(
+                'by_component',
                 None),
             remarks=obj.get(
                 'remarks',
@@ -150,13 +150,13 @@ given resource across revisions of the document.
         newcls.link = \
             obj.get('links')
         newcls.set_parameter = \
-            obj.get('parameter_settings')
+            obj.get('set_parameters')
         newcls.responsible_role = \
             obj.get('responsible_roles')
-        newcls.by_component = \
-            obj.get('by_components')
         newcls.statement = \
             obj.get('statements')
+        newcls.by_component = \
+            obj.get('by_components')
         newcls.oscal_property = \
             obj.get('prop')
         return newcls
@@ -267,11 +267,11 @@ given resource across revisions of the document.
                 self._set_parameter += list(x)
 
     @property
-    def parameter_settings(self):
+    def set_parameters(self):
         return self._set_parameter
 
-    @parameter_settings.setter
-    def parameter_settings(self, x):
+    @set_parameters.setter
+    def set_parameters(self, x):
         self.set_parameter(x)
 
     @property
@@ -297,28 +297,6 @@ given resource across revisions of the document.
         self.responsible_role(x)
 
     @property
-    def by_component(self):
-        return self._by_component
-
-    @by_component.setter
-    def by_component(self, x):
-        if not isinstance(x, list) and x is not None:
-            x = [x]
-        if not bool(self._by_component):
-            self._by_component = []
-        if bool(x):
-            if x != self._by_component:
-                self._by_component += list(x)
-
-    @property
-    def by_components(self):
-        return self._by_component
-
-    @by_components.setter
-    def by_components(self, x):
-        self.by_component(x)
-
-    @property
     def statement(self):
         return self._statement
 
@@ -339,3 +317,25 @@ given resource across revisions of the document.
     @statements.setter
     def statements(self, x):
         self.statement(x)
+
+    @property
+    def by_component(self):
+        return self._by_component
+
+    @by_component.setter
+    def by_component(self, x):
+        if not isinstance(x, list) and x is not None:
+            x = [x]
+        if not bool(self._by_component):
+            self._by_component = []
+        if bool(x):
+            if x != self._by_component:
+                self._by_component += list(x)
+
+    @property
+    def by_components(self):
+        return self._by_component
+
+    @by_components.setter
+    def by_components(self, x):
+        self.by_component(x)

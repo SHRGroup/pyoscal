@@ -22,7 +22,7 @@ leveraged system.
 
         link (ARRAY):
 
-        responsible_role (BY_KEY):
+        responsible_role (ARRAY):
 
     """
 

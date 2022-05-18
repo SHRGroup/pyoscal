@@ -7,7 +7,7 @@ class Logged_By:
         party_uuid (uuid):A pointer to the party who is making the
 log entry.
 
-        role_id (NCName):A point to the role-id of the role in which
+        role_id (token):A point to the role-id of the role in which
 the party is making the log entry.
 
         prose (str):Default value holder for raw data in texts

@@ -9,7 +9,7 @@ the plan. exactly what will be the focus of this assessment. Any
 subjects not identified in this way are out-of-scope.
 
     Attributes:
-        type (NCName):Indicates the type of assessment subject, such
+        type (token):Indicates the type of assessment subject, such
 as a component, inventory, item, location, or party
 represented by this selection statement.
 

@@ -17,6 +17,7 @@ class Set_Parameter:
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
         "param_id",

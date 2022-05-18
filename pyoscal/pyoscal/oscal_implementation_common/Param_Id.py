@@ -12,6 +12,7 @@ imported into the current implementation context.
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
     ]

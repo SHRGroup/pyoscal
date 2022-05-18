@@ -12,6 +12,7 @@ this user class.
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
     ]

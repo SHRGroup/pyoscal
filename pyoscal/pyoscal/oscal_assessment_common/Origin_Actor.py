@@ -5,12 +5,12 @@ class Origin_Actor:
 more actor type can be used to specify a person that is using a tool.
 
     Attributes:
-        type (NCName):The kind of actor.
+        type (token):The kind of actor.
 
-        uuid_ref (uuid):A pointer to the tool or person based on the
-associated type.
+        actor_uuid (uuid):A pointer to the tool or person based on
+the associated type.
 
-        role_id (NCName):For a party, this can optionally be used to
+        role_id (token):For a party, this can optionally be used to
 specify the role the actor was performing.
 
         prose (str):Default value holder for raw data in texts
@@ -28,7 +28,7 @@ specify the role the actor was performing.
     ]
     parameters = [
         "type",
-        "uuid_ref",
+        "actor_uuid",
         "role_id",
     ]
     subcomponents = [
@@ -40,7 +40,7 @@ specify the role the actor was performing.
     def __init__(
         self,
         type,
-        uuid_ref,
+        actor_uuid,
         use_name='origin-actor',
         role_id=None,
         prose=None,
@@ -50,9 +50,9 @@ specify the role the actor was performing.
         self._type = None
         self.type = \
             type
-        self._uuid_ref = None
-        self.uuid_ref = \
-            uuid_ref
+        self._actor_uuid = None
+        self.actor_uuid = \
+            actor_uuid
         self._role_id = None
         self.role_id = \
             role_id
@@ -81,8 +81,8 @@ specify the role the actor was performing.
             type=obj.get(
                 'type',
                 None),
-            uuid_ref=obj.get(
-                'uuid_ref',
+            actor_uuid=obj.get(
+                'actor_uuid',
                 None),
             role_id=obj.get(
                 'role_id',
@@ -116,14 +116,14 @@ specify the role the actor was performing.
         self._type = x
 
     @property
-    def uuid_ref(self):
+    def actor_uuid(self):
         """A pointer to the tool or person based on the associated type.
         """
-        return self._uuid_ref
+        return self._actor_uuid
 
-    @uuid_ref.setter
-    def uuid_ref(self, x):
-        self._uuid_ref = x
+    @actor_uuid.setter
+    def actor_uuid(self, x):
+        self._actor_uuid = x
 
     @property
     def role_id(self):

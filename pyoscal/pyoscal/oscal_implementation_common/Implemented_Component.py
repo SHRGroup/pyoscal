@@ -14,7 +14,7 @@ implemented as part of an inventory item.
 
         link (ARRAY):
 
-        responsible_party (BY_KEY):
+        responsible_party (ARRAY):
 
         remarks (str):
 
@@ -23,6 +23,7 @@ implemented as part of an inventory item.
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
         "component_uuid",

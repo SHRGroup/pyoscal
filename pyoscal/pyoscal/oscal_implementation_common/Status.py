@@ -4,7 +4,7 @@ class Status:
     Describes the operational status of the system component.
 
     Attributes:
-        state (NCName):The operational status.
+        state (token):The operational status.
 
         prose (str):Default value holder for raw data in texts
 
@@ -15,6 +15,7 @@ class Status:
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
         "state",

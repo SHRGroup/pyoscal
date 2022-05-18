@@ -5,7 +5,7 @@ class Responsible_Role:
 function relative to the containing object.
 
     Attributes:
-        role_id (NCName):The role that is responsible for the
+        role_id (token):The role that is responsible for the
 business function.
 
         prose (str):Default value holder for raw data in texts

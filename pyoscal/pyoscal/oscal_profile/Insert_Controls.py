@@ -4,7 +4,7 @@ class Insert_Controls:
     Specifies which controls to use in the containing context.
 
     Attributes:
-        order (NCName):A designation of how a selection of controls
+        order (token):A designation of how a selection of controls
 in a profile is to be ordered.
 
         prose (str):Default value holder for raw data in texts

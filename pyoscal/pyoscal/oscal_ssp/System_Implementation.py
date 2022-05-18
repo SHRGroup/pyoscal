@@ -15,9 +15,9 @@ authorized system from which this system inherits
 capabilities that satisfy security requirements. Another
 term for this concept is a
 
-        user (BY_KEY):
+        user (ARRAY):
 
-        component (BY_KEY):
+        component (ARRAY):
 
         inventory_item (ARRAY):
 

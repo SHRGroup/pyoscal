@@ -11,6 +11,7 @@ class Transport:
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
     ]

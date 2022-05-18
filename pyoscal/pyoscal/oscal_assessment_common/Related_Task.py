@@ -13,7 +13,7 @@ consequence of.
 
         link (ARRAY):
 
-        responsible_party (BY_KEY):
+        responsible_party (ARRAY):
 
         subject (ARRAY):
 

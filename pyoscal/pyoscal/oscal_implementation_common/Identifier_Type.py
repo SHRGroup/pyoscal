@@ -12,6 +12,7 @@ identifier was assigned.
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
     ]

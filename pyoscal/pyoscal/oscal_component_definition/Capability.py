@@ -16,7 +16,7 @@ class Capability:
 
         link (ARRAY):
 
-        incorporates_component (BY_KEY):
+        incorporates_component (ARRAY):
 
         control_implementation (ARRAY):
 

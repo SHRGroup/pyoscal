@@ -6,7 +6,8 @@ class Modify:
     Attributes:
         prose (str):Default value holder for raw data in texts
 
-        set_parameter (BY_KEY):
+        set_parameter (ARRAY):A parameter setting, to be propagated
+to points of insertion
 
         alter (ARRAY):
 
@@ -82,6 +83,8 @@ class Modify:
 
     @property
     def set_parameter(self):
+        """A parameter setting, to be propagated to points of insertion
+        """
         return self._set_parameter
 
     @set_parameter.setter

@@ -89,7 +89,6 @@ taken.
         description,
         start,
         reviewed_controls,
-        finding,
         use_name='result',
         prose=None,
         end=None,
@@ -100,6 +99,7 @@ taken.
         assessment_log=None,
         observation=None,
         risk=None,
+        finding=None,
         remarks=None,
     ):
         self._uuid = None

@@ -38,7 +38,7 @@ system sensitivity categorization, such as defined by
 
         data_flow (str):
 
-        responsible_party (BY_KEY):
+        responsible_party (ARRAY):
 
         remarks (str):
 

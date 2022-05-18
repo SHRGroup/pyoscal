@@ -4,14 +4,14 @@ class Group:
     A group of (selected) controls or of groups of controls
 
     Attributes:
-        id (NCName):A unique identifier for a specific group
-instance that can be used to reference the group within this
-and in other OSCAL documents. This identifier's uniqueness
-is document scoped and is intended to be consistent for the
+        id (token):A unique identifier for a specific group instance
+that can be used to reference the group within this and in
+other OSCAL documents. This identifier's uniqueness is
+document scoped and is intended to be consistent for the
 same group across minor revisions of the document.
 
-        oscal_class (NCName):A textual label that provides a sub-
-type or characterization of the group.
+        oscal_class (token):A textual label that provides a sub-type
+or characterization of the group.
 
         prose (str):Default value holder for raw data in texts
 

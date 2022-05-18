@@ -13,13 +13,11 @@ list of activities.
 
         link (ARRAY):
 
-        responsible_role (BY_KEY):
-
-        remarks (str):
+        responsible_role (ARRAY):
 
         subject (ARRAY):
 
-        subject_placeholder (str):
+        remarks (str):
 
     """
 
@@ -36,9 +34,8 @@ list of activities.
         "oscal_property",
         "link",
         "responsible_role",
-        "remarks",
         "subject",
-        "subject_placeholder",
+        "remarks",
     ]
 
     def __init__(
@@ -51,7 +48,6 @@ list of activities.
         link=None,
         responsible_role=None,
         remarks=None,
-        subject_placeholder=None,
     ):
         self._activity_uuid = None
         self.activity_uuid = \
@@ -68,15 +64,12 @@ list of activities.
         self._responsible_role = None
         self.responsible_role = \
             responsible_role
-        self._remarks = None
-        self.remarks = \
-            remarks
         self._subject = None
         self.subject = \
             subject
-        self._subject_placeholder = None
-        self.subject_placeholder = \
-            subject_placeholder
+        self._remarks = None
+        self.remarks = \
+            remarks
         self.use_name = use_name
         if oscal_property is None:
             self.oscal_property = []
@@ -109,14 +102,11 @@ list of activities.
             responsible_role=obj.get(
                 'responsible_role',
                 None),
-            remarks=obj.get(
-                'remarks',
-                None),
             subject=obj.get(
                 'subject',
                 None),
-            subject_placeholder=obj.get(
-                'subject_placeholder',
+            remarks=obj.get(
+                'remarks',
                 None),
         )
         newcls.oscal_property = \
@@ -158,14 +148,6 @@ list of activities.
     @remarks.setter
     def remarks(self, x):
         self._remarks = x
-
-    @property
-    def subject_placeholder(self):
-        return self._subject_placeholder
-
-    @subject_placeholder.setter
-    def subject_placeholder(self, x):
-        self._subject_placeholder = x
 
     @property
     def oscal_property(self):

@@ -10,7 +10,7 @@ class Control_Implementation:
 important things to know about how this set of control
 satisfaction documentation is approached.
 
-        set_parameter (BY_KEY):
+        set_parameter (ARRAY):
 
         implemented_requirement (ARRAY):
 

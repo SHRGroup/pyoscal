@@ -238,9 +238,3 @@ conducting the referenced activity-instance.
     @links.setter
     def links(self, x):
         self.link(x)
-
-
-class Subject_Placeholder(Assessment_Subject_Placeholder):
-    def __init__(self, **kw):
-        super(Subject_Placeholder, self).__init__(**kw)
-        self.use_name = 'subject_placeholder'

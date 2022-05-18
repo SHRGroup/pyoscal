@@ -1,7 +1,8 @@
 class How_Many:
     """Parameter Cardinality
 
-    Describes the number of selections that must occur.
+    Describes the number of selections that must occur. Without this
+setting, only one value should be assumed to be permitted.
 
     Attributes:
         prose (str):Default value holder for raw data in texts

@@ -1,5 +1,5 @@
 class Control_Objective_Selection:
-    """Referened Control Objectives
+    """Referenced Control Objectives
 
     Identifies the control objectives of the assessment. In the assessment
 plan, these are the planned objectives. In the assessment results,

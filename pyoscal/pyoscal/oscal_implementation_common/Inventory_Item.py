@@ -18,7 +18,7 @@ item stating its purpose within the system.
 
         link (ARRAY):
 
-        responsible_party (BY_KEY):
+        responsible_party (ARRAY):
 
         implemented_component (ARRAY):The set of components that are
 implemented in a given system inventory item.
@@ -30,6 +30,7 @@ implemented in a given system inventory item.
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
         "uuid",

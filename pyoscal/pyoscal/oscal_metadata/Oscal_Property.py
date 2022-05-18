@@ -7,7 +7,7 @@ property is a simple scalar value, which may be expressed as a list of
 values.
 
     Attributes:
-        name (NCName):A textual label that uniquely identifies a
+        name (token):A textual label that uniquely identifies a
 specific attribute, characteristic, or quality of the
 property's containing object.
 
@@ -23,8 +23,8 @@ semantics with the same name.
         value (string):Indicates the value of the attribute,
 characteristic, or quality.
 
-        oscal_class (NCName):A textual label that provides a sub-
-type or characterization of the property's
+        oscal_class (token):A textual label that provides a sub-type
+or characterization of the property's
 
         prose (str):Default value holder for raw data in texts
 

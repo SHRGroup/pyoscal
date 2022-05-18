@@ -1,5 +1,5 @@
 class Information_Type_Id:
-    """Information Type Systemized Identifier
+    """Information Type Systematized Identifier
 
     An identifier qualified by the given identification
 

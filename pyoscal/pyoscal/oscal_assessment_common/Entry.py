@@ -1,29 +1,28 @@
 class Entry:
     """Risk Log Entry
 
-    Identifies the result of a task that occurred as part of executing an
-assessment plan or an assessment event that occurred in producing the
-assessment results.
+    Identifies an individual risk response that occurred as part of
+managing an identified risk.
 
     Attributes:
-        uuid (uuid):Uniquely identifies an assessment event. This
-UUID may be referenced elsewhere in an OSCAL document when
+        uuid (uuid):Uniquely identifies a risk log entry. This UUID
+may be referenced elsewhere in an OSCAL document when
 referring to this information. A UUID should be consistently
 used for this schedule across revisions of the document.
 
         prose (str):Default value holder for raw data in texts
 
-        title (markup-line):The title for this event.
+        title (markup-line):The title for this risk log entry.
 
         description (markup-multiline):A human-readable description
-of this event.
+of what was done regarding the risk.
 
         start (dateTime-with-timezone):Identifies the start date and
-time of an event.
+time of the event.
 
         end (dateTime-with-timezone):Identifies the end date and
-time of an event. If the event is a point in time, the start
-and end will be the same date and time.
+time of the event. If the event is a point in time, the
+start and end will be the same date and time.
 
         oscal_property (ARRAY):
 
@@ -182,7 +181,7 @@ response that this log entry is for.
 
     @property
     def uuid(self):
-        """Uniquely identifies an assessment event. This UUID may be referenced
+        """Uniquely identifies a risk log entry. This UUID may be referenced
         elsewhere in an OSCAL document when referring to this information. A
         UUID should be consistently used for this schedule across revisions
         of the document.
@@ -205,7 +204,7 @@ response that this log entry is for.
 
     @property
     def title(self):
-        """The title for this event.
+        """The title for this risk log entry.
         """
         return self._title
 
@@ -215,7 +214,7 @@ response that this log entry is for.
 
     @property
     def description(self):
-        """A human-readable description of this event.
+        """A human-readable description of what was done regarding the risk.
         """
         return self._description
 
@@ -225,7 +224,7 @@ response that this log entry is for.
 
     @property
     def start(self):
-        """Identifies the start date and time of an event.
+        """Identifies the start date and time of the event.
         """
         return self._start
 
@@ -235,7 +234,7 @@ response that this log entry is for.
 
     @property
     def end(self):
-        """Identifies the end date and time of an event. If the event is a
+        """Identifies the end date and time of the event. If the event is a
         point in time, the start and end will be the same date and time.
         """
         return self._end

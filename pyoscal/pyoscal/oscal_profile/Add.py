@@ -4,10 +4,10 @@ class Add:
     Specifies contents to be added into controls, in resolution
 
     Attributes:
-        position (NCName):Where to add the new content with respect
+        position (token):Where to add the new content with respect
 to the targeted element (beside it or inside it)
 
-        id_ref (NCName):Target location of the addition.
+        by_id (token):Target location of the addition.
 
         prose (str):Default value holder for raw data in texts
 
@@ -31,7 +31,7 @@ be used by a tool for display and navigation.
     ]
     parameters = [
         "position",
-        "id_ref",
+        "by_id",
     ]
     subcomponents = [
         "prose",
@@ -46,7 +46,7 @@ be used by a tool for display and navigation.
         self,
         use_name='add',
         position=None,
-        id_ref=None,
+        by_id=None,
         prose=None,
         title=None,
         parameter=None,
@@ -57,9 +57,9 @@ be used by a tool for display and navigation.
         self._position = None
         self.position = \
             position
-        self._id_ref = None
-        self.id_ref = \
-            id_ref
+        self._by_id = None
+        self.by_id = \
+            by_id
         self._prose = None
         self.prose = \
             prose
@@ -98,8 +98,8 @@ be used by a tool for display and navigation.
             position=obj.get(
                 'position',
                 None),
-            id_ref=obj.get(
-                'id_ref',
+            by_id=obj.get(
+                'by_id',
                 None),
             prose=obj.get(
                 'prose',
@@ -146,14 +146,14 @@ be used by a tool for display and navigation.
         self._position = x
 
     @property
-    def id_ref(self):
+    def by_id(self):
         """Target location of the addition.
         """
-        return self._id_ref
+        return self._by_id
 
-    @id_ref.setter
-    def id_ref(self, x):
-        self._id_ref = x
+    @by_id.setter
+    def by_id(self, x):
+        self._by_id = x
 
     @property
     def prose(self):

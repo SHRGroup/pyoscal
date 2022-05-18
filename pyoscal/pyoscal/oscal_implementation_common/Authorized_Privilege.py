@@ -19,6 +19,7 @@ purpose within the system.
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
     ]

@@ -8,7 +8,7 @@ with the POA&M.
     Attributes:
         prose (str):Default value holder for raw data in texts
 
-        component (BY_KEY):
+        component (ARRAY):
 
         inventory_item (ARRAY):
 

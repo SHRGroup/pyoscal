@@ -15,6 +15,7 @@ from which the provided identifier was assigned.
     contexts = [
         "oscal-implementation-common",
         "oscal-metadata",
+        "oscal-catalog-common",
     ]
     parameters = [
         "identifier_type",

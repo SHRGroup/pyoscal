@@ -6,11 +6,9 @@ class Subject_Reference:
 component, inventory item, location, user, or something else.
 
     Attributes:
-        uuid_ref (uuid):A pointer to a component, inventory-item,
-location, party, user, or resource using it's UUID.
+        subject_uuid (str):
 
-        type (NCName):Used to indicate the type of object pointed to
-by the
+        type (str):
 
         prose (str):Default value holder for raw data in texts
 
@@ -31,7 +29,7 @@ subject.
         "oscal-implementation-common",
     ]
     parameters = [
-        "uuid_ref",
+        "subject_uuid",
         "type",
     ]
     subcomponents = [
@@ -44,7 +42,7 @@ subject.
 
     def __init__(
         self,
-        uuid_ref,
+        subject_uuid,
         type,
         use_name='subject-reference',
         prose=None,
@@ -53,9 +51,9 @@ subject.
         link=None,
         remarks=None,
     ):
-        self._uuid_ref = None
-        self.uuid_ref = \
-            uuid_ref
+        self._subject_uuid = None
+        self.subject_uuid = \
+            subject_uuid
         self._type = None
         self.type = \
             type
@@ -87,8 +85,8 @@ subject.
     @classmethod
     def fromDict(cls, obj):
         newcls = cls(
-            uuid_ref=obj.get(
-                'uuid_ref',
+            subject_uuid=obj.get(
+                'subject_uuid',
                 None),
             type=obj.get(
                 'type',
@@ -118,20 +116,15 @@ subject.
         return newcls
 
     @property
-    def uuid_ref(self):
-        """A pointer to a component, inventory-item, location, party, user, or
-        resource using it's UUID.
-        """
-        return self._uuid_ref
+    def subject_uuid(self):
+        return self._subject_uuid
 
-    @uuid_ref.setter
-    def uuid_ref(self, x):
-        self._uuid_ref = x
+    @subject_uuid.setter
+    def subject_uuid(self, x):
+        self._subject_uuid = x
 
     @property
     def type(self):
-        """Used to indicate the type of object pointed to by the
-        """
         return self._type
 
     @type.setter

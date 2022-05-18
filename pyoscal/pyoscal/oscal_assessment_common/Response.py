@@ -11,7 +11,7 @@ referring to this information. Once assigned, a UUID should
 be consistently used for a given remediation across
 revisions.
 
-        lifecycle (NCName):Identifies whether this is a
+        lifecycle (token):Identifies whether this is a
 recommendation, such as from an assessor or tool, or an
 actual plan accepted by the system owner.
 

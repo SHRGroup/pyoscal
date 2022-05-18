@@ -4,10 +4,10 @@ class Set_Parameter:
     A parameter setting, to be propagated to points of insertion
 
     Attributes:
-        param_id (NCName):Indicates the value of the 'id' flag on a
+        param_id (token):Indicates the value of the 'id' flag on a
 target parameter; i.e. which parameter to set
 
-        oscal_class (NCName):A textual label that provides a
+        oscal_class (token):A textual label that provides a
 characterization of the parameter.
 
         depends_on (str):

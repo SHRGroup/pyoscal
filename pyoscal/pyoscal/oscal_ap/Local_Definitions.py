@@ -7,11 +7,11 @@ do not appear in the referenced SSP.
     Attributes:
         prose (str):Default value holder for raw data in texts
 
-        component (BY_KEY):
+        component (ARRAY):
 
         inventory_item (ARRAY):
 
-        user (BY_KEY):
+        user (ARRAY):
 
         objectives_and_methods (ARRAY):
 

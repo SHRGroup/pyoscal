@@ -1,7 +1,7 @@
 class End:
     """End
 
-    Identifies the end date and time of an event. If the event is a point
+    Identifies the end date and time of the event. If the event is a point
 in time, the start and end will be the same date and time.
 
     Attributes:

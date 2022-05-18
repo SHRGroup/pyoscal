@@ -11,9 +11,7 @@ bibliographic data.
 
         oscal_property (ARRAY):
 
-        biblio (str):A container for structured bibliographic
-information. The model of this information is undefined by
-OSCAL.
+        link (ARRAY):
 
     """
 
@@ -26,7 +24,7 @@ OSCAL.
         "prose",
         "text",
         "oscal_property",
-        "biblio",
+        "link",
     ]
 
     def __init__(
@@ -35,7 +33,7 @@ OSCAL.
         use_name='citation',
         prose=None,
         oscal_property=None,
-        biblio=None,
+        link=None,
     ):
         self._prose = None
         self.prose = \
@@ -46,12 +44,14 @@ OSCAL.
         self._oscal_property = None
         self.oscal_property = \
             oscal_property
-        self._biblio = None
-        self.biblio = \
-            biblio
+        self._link = None
+        self.link = \
+            link
         self.use_name = use_name
         if oscal_property is None:
             self.oscal_property = []
+        if link is None:
+            self.link = []
 
     def __str__(self):
 
@@ -69,12 +69,14 @@ OSCAL.
             oscal_property=obj.get(
                 'oscal_property',
                 None),
-            biblio=obj.get(
-                'biblio',
+            link=obj.get(
+                'link',
                 None),
         )
         newcls.oscal_property = \
             obj.get('props')
+        newcls.link = \
+            obj.get('links')
         newcls.oscal_property = \
             obj.get('prop')
         return newcls
@@ -98,17 +100,6 @@ OSCAL.
     @text.setter
     def text(self, x):
         self._text = x
-
-    @property
-    def biblio(self):
-        """A container for structured bibliographic information. The model of
-        this information is undefined by OSCAL.
-        """
-        return self._biblio
-
-    @biblio.setter
-    def biblio(self, x):
-        self._biblio = x
 
     @property
     def oscal_property(self):
@@ -139,3 +130,25 @@ OSCAL.
     @prop.setter
     def prop(self, x):
         self.oscal_property(x)
+
+    @property
+    def link(self):
+        return self._link
+
+    @link.setter
+    def link(self, x):
+        if not isinstance(x, list) and x is not None:
+            x = [x]
+        if not bool(self._link):
+            self._link = []
+        if bool(x):
+            if x != self._link:
+                self._link += list(x)
+
+    @property
+    def links(self):
+        return self._link
+
+    @links.setter
+    def links(self, x):
+        self.link(x)

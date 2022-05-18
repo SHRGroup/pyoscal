@@ -23,7 +23,7 @@ of this step.
 
         reviewed_controls (str):
 
-        responsible_role (BY_KEY):
+        responsible_role (ARRAY):
 
         remarks (str):
 

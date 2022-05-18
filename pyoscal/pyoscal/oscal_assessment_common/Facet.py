@@ -5,7 +5,7 @@ class Facet:
 the same actor.
 
     Attributes:
-        name (NCName):The name of the risk metric within the
+        name (token):The name of the risk metric within the
 specified system.
 
         system (uri):Specifies the naming system under which this
