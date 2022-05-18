@@ -4,7 +4,7 @@ import re
 import unittest
 
 sys.path.insert(0, './pyoscal/')
-from pyoscal.core.OSCAL import OSCAL  # noqa: E402 # Necessary to below path insert
+from pyoscal.core.OSCAL import OSCAL  # noqa: E402
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
