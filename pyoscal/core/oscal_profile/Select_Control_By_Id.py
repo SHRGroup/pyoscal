@@ -138,15 +138,16 @@ match on ID
                 self._matching += list(x)
 
 
-class Include_Controls(Select_Control_By_Id):
+class Exclude_Control(Select_Control_By_Id):
     def __init__(self, **kw):
-<<<<<<< HEAD:pyoscal/core/oscal_profile/Select_Control_By_Id.py
         super(Exclude_Control, self).__init__(**kw)
         self.use_name = 'exclude_control'
-=======
+
+
+class Include_Controls(Select_Control_By_Id):
+    def __init__(self, **kw):
         super(Include_Controls, self).__init__(**kw)
         self.use_name = 'include_controls'
->>>>>>> 4c97ce4 (seems to parse YAML):pyoscal/pyoscal/oscal_profile/Select_Control_By_Id.py
 
 
 class Include_Control(Select_Control_By_Id):
@@ -157,22 +158,5 @@ class Include_Control(Select_Control_By_Id):
 
 class Exclude_Controls(Select_Control_By_Id):
     def __init__(self, **kw):
-<<<<<<< HEAD:pyoscal/core/oscal_profile/Select_Control_By_Id.py
-        super(Include_Controls, self).__init__(**kw)
-        self.use_name = 'include_controls'
-
-
-class Exclude_Controls(Select_Control_By_Id):
-    def __init__(self, **kw):
         super(Exclude_Controls, self).__init__(**kw)
         self.use_name = 'exclude_controls'
-=======
-        super(Exclude_Controls, self).__init__(**kw)
-        self.use_name = 'exclude_controls'
-
-
-class Exclude_Control(Select_Control_By_Id):
-    def __init__(self, **kw):
-        super(Exclude_Control, self).__init__(**kw)
-        self.use_name = 'exclude_control'
->>>>>>> 4c97ce4 (seems to parse YAML):pyoscal/pyoscal/oscal_profile/Select_Control_By_Id.py

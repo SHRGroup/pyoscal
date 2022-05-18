@@ -2,7 +2,7 @@ import os
 
 from .XML import OSCAL_XML
 from .YAML import OSCAL_YAML
-from pyoscal import *  # noqa: F401 F403
+from pyoscal.core import *  # noqa: F401 F403
 
 
 class OSCAL:
@@ -20,8 +20,11 @@ class OSCAL:
 
     def parse_file(self, filepath):
         extension = os.path.splitext(filepath)[1]
+        # print(f"Extension: {extension}")
         parser = self.get_parser(extension)
+        # print(f"Parser: {parser}")
         obj = parser.parse(filepath)
+        # print(f"object: {obj}")
         self.add_model(obj)
         return obj
 

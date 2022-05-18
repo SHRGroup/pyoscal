@@ -189,13 +189,13 @@ class Select_Subject_By_Id:
         self.link(x)
 
 
-class Exclude_Subject(Select_Subject_By_Id):
-    def __init__(self, **kw):
-        super(Exclude_Subject, self).__init__(**kw)
-        self.use_name = 'exclude_subject'
-
-
 class Include_Subject(Select_Subject_By_Id):
     def __init__(self, **kw):
         super(Include_Subject, self).__init__(**kw)
         self.use_name = 'include_subject'
+
+
+class Exclude_Subject(Select_Subject_By_Id):
+    def __init__(self, **kw):
+        super(Exclude_Subject, self).__init__(**kw)
+        self.use_name = 'exclude_subject'

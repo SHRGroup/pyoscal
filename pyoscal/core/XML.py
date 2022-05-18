@@ -67,10 +67,13 @@ class OSCAL_XML(OSCAL_IO):
             no_network=False)
 
         tree = etree.parse(filepath, parser=parser)
+        # print(tree.getroot())
         return self.objectify(tree.getroot())
 
     def objectify(self, xmlobject, contexts=[]):
         classname = self.clean_name(self.get_tag(xmlobject)).title()
+        # print(f"classname: {classname}")
+        # print(f"Contexts: {contexts}")
         if self.is_class(classname, contexts=contexts):
             classobject = self.find_class(classname, contexts)
             classmodule = sys.modules[self.class_module(classobject)]
@@ -86,6 +89,7 @@ class OSCAL_XML(OSCAL_IO):
             return self.stringify(xmlobject)
         attributes = {}
         value_id = 'prose'
+        # print(f"attribs: {xmlobject.attrib}")
         for attribute in xmlobject.attrib:
             attr_name = self.clean_name(attribute).title()
             classpath = self.find_class(attr_name, contexts=contexts)
@@ -131,6 +135,7 @@ class OSCAL_XML(OSCAL_IO):
 
         local_vars = {'attributes': attributes}
         classpath = self.find_class(classname, contexts=contexts)
+        # print(f"classpath: {classpath}")
         try:
             exec("newclass = {}.fromDict(attributes)".format(
                 classpath), globals(), local_vars)
@@ -140,7 +145,7 @@ class OSCAL_XML(OSCAL_IO):
                     classname,
                     etree.tostring(xmlobject)))
             print(e)
-
+        # print(local_vars.get('newclass'))
         return local_vars.get('newclass')
 
     def export_obj(self, obj, rootname=None):

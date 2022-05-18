@@ -4,7 +4,7 @@ import re
 import unittest
 
 sys.path.insert(0, './pyoscal/')
-from pyoscal.OSCAL import OSCAL  # noqa: E402 # Necessary to below path insert
+from pyoscal.core.OSCAL import OSCAL  # noqa: E402 # Necessary to below path insert
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -22,6 +22,7 @@ class TestCatalog(unittest.TestCase):
 
     def test_parseCatalog(self):
         oscal = self.createOSCAL()
+        # print(oscal.objects)
         self.assertEqual(len(oscal.objects.get('Catalog')), 1)
 
     def test_catalogContent(self):
