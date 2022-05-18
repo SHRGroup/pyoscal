@@ -30,6 +30,14 @@ def find_definitions(xmlobject):
     return defintions
 
 
+# def find_plurals(xmlobject, singular):
+#     references = xmlobject.xpath(
+#         f'//oscal:assembly[@ref="{singular}"]/g',
+#         namespaces={'oscal': ns['']}
+#     )
+#     return [ref.attrib.get('name') for ref in references]
+
+
 def find_class(classname, contexts=[]):
     """Find a class by name from the list of currently created class objects
 

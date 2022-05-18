@@ -40,7 +40,8 @@ class OSCAL_IO:
         oscal_classes = [
             inspect.getmembers(sys.modules[m], inspect.isclass)
             for m in list(sys.modules.keys())
-            if m.startswith('pyoscal.core.oscal_')]
+            if m.startswith('pyoscal.oscal_')]
+        # print(f"classes: {oscal_classes}")
         for collection in oscal_classes:
             for oscal_class in collection:
                 class_list += [oscal_class]

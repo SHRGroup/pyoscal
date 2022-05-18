@@ -1,4 +1,7 @@
+import os
+
 from .XML import OSCAL_XML
+from .YAML import OSCAL_YAML
 from pyoscal import *  # noqa: F401 F403
 
 
@@ -7,17 +10,23 @@ class OSCAL:
     def __init__(self):
         self.objects = {}
 
-    def parse_file(self, filepath):
-        if filepath.lower().endswith('xml'):
-            parser = OSCAL_XML()
+    def get_parser(self, fmt='xml'):
+        fmt = fmt.replace('.', '').lower()
+        if fmt == 'xml':
+            return OSCAL_XML()
+        elif fmt in ['yaml', 'yml']:
+            return OSCAL_YAML()
+        return OSCAL_XML()
 
+    def parse_file(self, filepath):
+        extension = os.path.splitext(filepath)[1]
+        parser = self.get_parser(extension)
         obj = parser.parse(filepath)
         self.add_model(obj)
         return obj
 
     def parse_string(self, content, fmt='xml'):
-        if fmt == 'xml':
-            parser = OSCAL_XML()
+        parser = self.get_parser(fmt)
         obj = parser.from_string(content)
         self.add_model(obj)
         return obj
@@ -43,8 +52,7 @@ class OSCAL:
         return None
 
     def export(self, outtype='xml', uuid="", outputpath="."):
-        if outtype.lower() == 'xml':
-            parser = OSCAL_XML()
+        parser = self.get_parser(outtype)
         if not uuid:
             for obj in self.object_list():
                 out = parser.export(obj)
