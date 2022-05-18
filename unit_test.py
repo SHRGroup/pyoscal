@@ -29,7 +29,7 @@ class TestCatalog(unittest.TestCase):
         catalog = oscal.objects.get('Catalog')[0]
         self.assertEqual(
             str(catalog.uuid),
-            '22054d80-252f-4ab8-ae9c-5bf69c9109a9')
+            '74c8ba1e-5cd4-4ad1-bbfd-d888e2f6c724')
         self.assertEqual(
             str(catalog.metadata.title),
             'Sample Security Catalog <em>for Demonstration</em> and Testing')
@@ -40,7 +40,10 @@ class TestProfile(unittest.TestCase):
     def createOSCAL(self):
         filepath = os.path.join(
             script_dir,
-            'oscal-content/fedramp.gov/xml/FedRAMP_HIGH-baseline_profile.xml'
+            os.path.join(
+                'oscal-content/nist.gov/SP800-53/rev5/xml/',
+                'NIST_SP-800-53_rev5_PRIVACY-baseline_profile.xml'
+            )
         )
         oscal = OSCAL()
         oscal.parse_file(filepath)
@@ -56,7 +59,7 @@ class TestProfile(unittest.TestCase):
             for imp in profile.imports:
                 for inc in imp.include_controls:
                     count += len(inc.with_id)
-        self.assertEqual(count, 421)
+        self.assertEqual(count, 96)
 
 
 class TestSSP(unittest.TestCase):

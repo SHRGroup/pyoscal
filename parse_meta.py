@@ -173,7 +173,7 @@ def output_puml(outdir='.'):
             'imports': package_imports
         }
     )
-    outpath = os.path.join(outdir, 'diagram.puml')
+    outpath = 'diagram.puml'
     with open(outpath, 'w') as f:
         f.write(output)
 
@@ -206,7 +206,7 @@ def main():
     metaschema_xmls = [os.path.join(metaschema_root, f)
                        for f in os.listdir(metaschema_root)
                        if f.lower().endswith('_metaschema.xml')]
-    out_dir = 'pyoscal/pyoscal'
+    out_dir = 'pyoscal/core'
     if not os.path.isdir(out_dir):
         os.makedirs(out_dir)
 
@@ -230,17 +230,17 @@ def main():
 
     # Write INITS
     globalinit_lines = []
-    globalinit_lines += ["from pyoscal.OSCAL import *\n"]
+    globalinit_lines += ["from pyoscal.core.OSCAL import *\n"]
     modules = list(contexts.keys())
     modules.sort()
     for grp in modules:
-        globalinit_lines += ["from pyoscal.{} import *\n".format(grp)]
+        globalinit_lines += ["from pyoscal.core.{} import *\n".format(grp)]
         classinit_lines = []
         classes = contexts[grp]
         classes.sort()
         for classinit in classes:
             classinit_lines += [
-                "import pyoscal.{}.{}\n".format(grp, classinit)
+                "import pyoscal.core.{}.{}\n".format(grp, classinit)
             ]
         with open(os.path.join(out_dir, grp, '__init__.py'), 'w') as classinit:
             classinit.writelines(set(classinit_lines))

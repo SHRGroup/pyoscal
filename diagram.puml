@@ -1,0 +1,2616 @@
+@startuml
+
+skinparam ranksep 5 
+
+skinparam monochrome true
+
+
+package oscal_metadata {
+
+    class "Metadata" as oscal_metadata_metadata {
+        prose : str
+        title : markup-line
+        published : str
+        last_modified : str
+        version : str
+        oscal_version : str
+        revision : ARRAY
+        document_id : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        role : ARRAY
+        location : ARRAY
+        party : ARRAY
+        responsible_party : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Title" as oscal_metadata_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Revision" as oscal_metadata_revision {
+        prose : str
+        title : markup-line
+        published : str
+        last_modified : str
+        version : str
+        oscal_version : str
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Location" as oscal_metadata_location {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        address : str
+        email_address : ARRAY
+        telephone_number : ARRAY
+        url : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uuid" as oscal_metadata_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Url" as oscal_metadata_url {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Location_Uuid" as oscal_metadata_location_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Party" as oscal_metadata_party {
+        uuid : uuid
+        type : string
+        prose : str
+        name : str
+        short_name : str
+        external_id : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        email_address : ARRAY
+        telephone_number : ARRAY
+        member_of_organization : ARRAY
+        remarks : str
+        address : ARRAY
+        location_uuid : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Type" as oscal_metadata_type {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Name" as oscal_metadata_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Short_Name" as oscal_metadata_short_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "External_Id" as oscal_metadata_external_id {
+        scheme : uri
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Scheme" as oscal_metadata_scheme {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Member_Of_Organization" as oscal_metadata_member_of_organization {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Party_Uuid" as oscal_metadata_party_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Role" as oscal_metadata_role {
+        id : token
+        prose : str
+        title : markup-line
+        short_name : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Id" as oscal_metadata_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Description" as oscal_metadata_description {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Role_Id" as oscal_metadata_role_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Back_Matter" as oscal_metadata_back_matter {
+        prose : str
+        resource : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Resource" as oscal_metadata_resource {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        document_id : ARRAY
+        citation : str
+        rlink : ARRAY
+        base64 : base64Binary
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Citation" as oscal_metadata_citation {
+        prose : str
+        text : markup-line
+        oscal_property : ARRAY
+        link : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Text" as oscal_metadata_text {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Rlink" as oscal_metadata_rlink {
+        href : uri-reference
+        media_type : str
+        prose : str
+        hash : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Href" as oscal_metadata_href {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Base64" as oscal_metadata_base64 {
+        filename : uri-reference
+        media_type : str
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Filename" as oscal_metadata_filename {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Oscal_Property" as oscal_metadata_oscal_property {
+        name : token
+        uuid : uuid
+        ns : uri
+        value : string
+        oscal_class : token
+        prose : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Prop" as oscal_metadata_oscal_property_Prop 
+    oscal_metadata_oscal_property <|-- oscal_metadata_oscal_property_Prop : Inherits
+    class "Ns" as oscal_metadata_ns {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Value" as oscal_metadata_value {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Oscal_Class" as oscal_metadata_oscal_class {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Link" as oscal_metadata_link {
+        href : uri-reference
+        rel : token
+        media_type : str
+        prose : str
+        text : markup-line
+        {method} fromDict(obj)
+    }
+    
+    class "Rel" as oscal_metadata_rel {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Responsible_Party" as oscal_metadata_responsible_party {
+        role_id : token
+        prose : str
+        party_uuid : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Responsible_Role" as oscal_metadata_responsible_role {
+        role_id : token
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        party_uuid : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Hash" as oscal_metadata_hash {
+        algorithm : string
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Algorithm" as oscal_metadata_algorithm {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Media_Type" as oscal_metadata_media_type {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Remarks" as oscal_metadata_remarks {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Published" as oscal_metadata_published {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Last_Modified" as oscal_metadata_last_modified {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Version" as oscal_metadata_version {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Oscal_Version" as oscal_metadata_oscal_version {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Email_Address" as oscal_metadata_email_address {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Telephone_Number" as oscal_metadata_telephone_number {
+        type : str
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Address" as oscal_metadata_address {
+        type : str
+        prose : str
+        addr_line : ARRAY
+        city : str
+        state : str
+        postal_code : str
+        country : str
+        {method} fromDict(obj)
+    }
+    
+    class "City" as oscal_metadata_city {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "State" as oscal_metadata_state {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Postal_Code" as oscal_metadata_postal_code {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Country" as oscal_metadata_country {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Addr_Line" as oscal_metadata_addr_line {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Location_Type" as oscal_metadata_location_type {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Type" as oscal_metadata_location_type_Type 
+    oscal_metadata_location_type <|-- oscal_metadata_location_type_Type : Inherits
+    class "Document_Id" as oscal_metadata_document_id {
+        scheme : uri
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_catalog_common {
+
+    class "Part" as oscal_catalog_common_part {
+        id : token
+        name : token
+        ns : uri
+        oscal_class : token
+        title : markup-line
+        oscal_property : ARRAY
+        prose : markup-multiline
+        part : ARRAY
+        link : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Id" as oscal_catalog_common_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Name" as oscal_catalog_common_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Ns" as oscal_catalog_common_ns {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Oscal_Class" as oscal_catalog_common_oscal_class {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Title" as oscal_catalog_common_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Prose" as oscal_catalog_common_prose {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Parameter" as oscal_catalog_common_parameter {
+        id : token
+        oscal_class : token
+        depends_on : str
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        label : markup-line
+        usage : markup-multiline
+        constraint : ARRAY
+        guideline : ARRAY
+        remarks : str
+        value : ARRAY
+        select : str
+        {method} fromDict(obj)
+    }
+    
+    class "Param" as oscal_catalog_common_parameter_Param 
+    oscal_catalog_common_parameter <|-- oscal_catalog_common_parameter_Param : Inherits
+    class "Label" as oscal_catalog_common_label {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Usage" as oscal_catalog_common_usage {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Parameter_Constraint" as oscal_catalog_common_parameter_constraint {
+        prose : str
+        description : markup-multiline
+        test : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Constraint" as oscal_catalog_common_parameter_constraint_Constraint 
+    oscal_catalog_common_parameter_constraint <|-- oscal_catalog_common_parameter_constraint_Constraint : Inherits
+    class "Description" as oscal_catalog_common_description {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Test" as oscal_catalog_common_test {
+        prose : str
+        expression : string
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Expression" as oscal_catalog_common_expression {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Parameter_Guideline" as oscal_catalog_common_parameter_guideline {
+        prose : markup-multiline
+        {method} fromDict(obj)
+    }
+    
+    class "Guideline" as oscal_catalog_common_parameter_guideline_Guideline 
+    oscal_catalog_common_parameter_guideline <|-- oscal_catalog_common_parameter_guideline_Guideline : Inherits
+    class "Parameter_Value" as oscal_catalog_common_parameter_value {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Value" as oscal_catalog_common_parameter_value_Value 
+    oscal_catalog_common_parameter_value <|-- oscal_catalog_common_parameter_value_Value : Inherits
+    class "Parameter_Selection" as oscal_catalog_common_parameter_selection {
+        how_many : token
+        prose : str
+        choice : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Select" as oscal_catalog_common_parameter_selection_Select 
+    oscal_catalog_common_parameter_selection <|-- oscal_catalog_common_parameter_selection_Select : Inherits
+    class "How_Many" as oscal_catalog_common_how_many {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Parameter_Choice" as oscal_catalog_common_parameter_choice {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Choice" as oscal_catalog_common_parameter_choice_Choice 
+    oscal_catalog_common_parameter_choice <|-- oscal_catalog_common_parameter_choice_Choice : Inherits
+    class "Depends_On" as oscal_catalog_common_depends_on {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Control_Id" as oscal_catalog_common_control_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_implementation_common {
+
+    class "System_Component" as oscal_implementation_common_system_component {
+        uuid : uuid
+        type : str
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        purpose : markup-line
+        oscal_property : ARRAY
+        link : ARRAY
+        status : str
+        responsible_role : ARRAY
+        protocol : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Component" as oscal_implementation_common_system_component_Component 
+    oscal_implementation_common_system_component <|-- oscal_implementation_common_system_component_Component : Inherits
+    class "Uuid" as oscal_implementation_common_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Title" as oscal_implementation_common_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Description" as oscal_implementation_common_description {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Purpose" as oscal_implementation_common_purpose {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Status" as oscal_implementation_common_status {
+        state : token
+        prose : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "State" as oscal_implementation_common_state {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "System_Component_Type" as oscal_implementation_common_system_component_type {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Type" as oscal_implementation_common_system_component_type_Type 
+    oscal_implementation_common_system_component_type <|-- oscal_implementation_common_system_component_type_Type : Inherits
+    class "Protocol" as oscal_implementation_common_protocol {
+        uuid : uuid
+        name : str
+        prose : str
+        title : markup-line
+        port_range : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Name" as oscal_implementation_common_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Port_Range" as oscal_implementation_common_port_range {
+        start : nonNegativeInteger
+        end : nonNegativeInteger
+        transport : token
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Start" as oscal_implementation_common_start {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "End" as oscal_implementation_common_end {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Transport" as oscal_implementation_common_transport {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Implementation_Status" as oscal_implementation_common_implementation_status {
+        state : token
+        prose : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "System_User" as oscal_implementation_common_system_user {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        short_name : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        role_id : ARRAY
+        authorized_privilege : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "User" as oscal_implementation_common_system_user_User 
+    oscal_implementation_common_system_user <|-- oscal_implementation_common_system_user_User : Inherits
+    class "Short_Name" as oscal_implementation_common_short_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Authorized_Privilege" as oscal_implementation_common_authorized_privilege {
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        function_performed : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Function_Performed" as oscal_implementation_common_function_performed {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Inventory_Item" as oscal_implementation_common_inventory_item {
+        uuid : uuid
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_party : ARRAY
+        implemented_component : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Implemented_Component" as oscal_implementation_common_implemented_component {
+        component_uuid : uuid
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_party : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Component_Uuid" as oscal_implementation_common_component_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Source" as oscal_implementation_common_source {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Statement_Id" as oscal_implementation_common_statement_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Set_Parameter" as oscal_implementation_common_set_parameter {
+        param_id : str
+        prose : str
+        value : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Parameter_Value" as oscal_implementation_common_parameter_value {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Value" as oscal_implementation_common_parameter_value_Value 
+    oscal_implementation_common_parameter_value <|-- oscal_implementation_common_parameter_value_Value : Inherits
+    class "System_Id" as oscal_implementation_common_system_id {
+        identifier_type : uri
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Identifier_Type" as oscal_implementation_common_identifier_type {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Param_Id" as oscal_implementation_common_param_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_assessment_common {
+
+    class "Import_Ssp" as oscal_assessment_common_import_ssp {
+        href : uri-reference
+        prose : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Href" as oscal_assessment_common_href {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Local_Objective" as oscal_assessment_common_local_objective {
+        control_id : str
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        part : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Objectives_And_Methods" as oscal_assessment_common_local_objective_Objectives_And_Methods 
+    oscal_assessment_common_local_objective <|-- oscal_assessment_common_local_objective_Objectives_And_Methods : Inherits
+    class "Description" as oscal_assessment_common_description {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Assessment_Method" as oscal_assessment_common_assessment_method {
+        uuid : uuid
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        assessment_part : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uuid" as oscal_assessment_common_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Activity" as oscal_assessment_common_activity {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        step : ARRAY
+        related_controls : str
+        responsible_role : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Activity" as oscal_assessment_common_activity_Activity 
+    oscal_assessment_common_activity <|-- oscal_assessment_common_activity_Activity : Inherits
+    class "Title" as oscal_assessment_common_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Step" as oscal_assessment_common_step {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        reviewed_controls : str
+        responsible_role : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Task" as oscal_assessment_common_task {
+        uuid : uuid
+        type : token
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        timing : str
+        dependency : ARRAY
+        task : ARRAY
+        associated_activity : ARRAY
+        subject : ARRAY
+        responsible_role : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Assessment_Task" as oscal_assessment_common_task_Assessment_Task 
+    oscal_assessment_common_task <|-- oscal_assessment_common_task_Assessment_Task : Inherits
+    class "Type" as oscal_assessment_common_type {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Timing" as oscal_assessment_common_timing {
+        prose : str
+        on_date : str
+        within_date_range : str
+        at_frequency : str
+        {method} fromDict(obj)
+    }
+    
+    class "On_Date" as oscal_assessment_common_on_date {
+        date : dateTime-with-timezone
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Date" as oscal_assessment_common_date {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Within_Date_Range" as oscal_assessment_common_within_date_range {
+        start : dateTime-with-timezone
+        end : dateTime-with-timezone
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Start" as oscal_assessment_common_start {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "End" as oscal_assessment_common_end {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "At_Frequency" as oscal_assessment_common_at_frequency {
+        period : positiveInteger
+        unit : string
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Period" as oscal_assessment_common_period {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Unit" as oscal_assessment_common_unit {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Dependency" as oscal_assessment_common_dependency {
+        task_uuid : uuid
+        prose : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Task_Uuid" as oscal_assessment_common_task_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Associated_Activity" as oscal_assessment_common_associated_activity {
+        activity_uuid : uuid
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_role : ARRAY
+        subject : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Activity_Uuid" as oscal_assessment_common_activity_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Reviewed_Controls" as oscal_assessment_common_reviewed_controls {
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        control_selection : ARRAY
+        control_objective_selection : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Related_Controls" as oscal_assessment_common_reviewed_controls_Related_Controls 
+    oscal_assessment_common_reviewed_controls <|-- oscal_assessment_common_reviewed_controls_Related_Controls : Inherits
+    class "Control_Selection" as oscal_assessment_common_control_selection {
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        exclude_control : ARRAY
+        remarks : str
+        include_all : str
+        include_control : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Include_All" as oscal_assessment_common_include_all {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Control_Objective_Selection" as oscal_assessment_common_control_objective_selection {
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        exclude_objective : ARRAY
+        remarks : str
+        include_all : str
+        include_objective : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Select_Control_By_Id" as oscal_assessment_common_select_control_by_id {
+        control_id : str
+        prose : str
+        statement_id : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Exclude_Control" as oscal_assessment_common_select_control_by_id_Exclude_Control 
+    oscal_assessment_common_select_control_by_id <|-- oscal_assessment_common_select_control_by_id_Exclude_Control : Inherits
+    class "Include_Control" as oscal_assessment_common_select_control_by_id_Include_Control 
+    oscal_assessment_common_select_control_by_id <|-- oscal_assessment_common_select_control_by_id_Include_Control : Inherits
+    class "Include_Controls" as oscal_assessment_common_select_control_by_id_Include_Controls 
+    oscal_assessment_common_select_control_by_id <|-- oscal_assessment_common_select_control_by_id_Include_Controls : Inherits
+    class "Exclude_Controls" as oscal_assessment_common_select_control_by_id_Exclude_Controls 
+    oscal_assessment_common_select_control_by_id <|-- oscal_assessment_common_select_control_by_id_Exclude_Controls : Inherits
+    class "Statement_Id" as oscal_assessment_common_statement_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Select_Objective_By_Id" as oscal_assessment_common_select_objective_by_id {
+        objective_id : str
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Exclude_Objective" as oscal_assessment_common_select_objective_by_id_Exclude_Objective 
+    oscal_assessment_common_select_objective_by_id <|-- oscal_assessment_common_select_objective_by_id_Exclude_Objective : Inherits
+    class "Include_Objective" as oscal_assessment_common_select_objective_by_id_Include_Objective 
+    oscal_assessment_common_select_objective_by_id <|-- oscal_assessment_common_select_objective_by_id_Include_Objective : Inherits
+    class "Assessment_Subject_Placeholder" as oscal_assessment_common_assessment_subject_placeholder {
+        uuid : uuid
+        prose : str
+        description : markup-multiline
+        source : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Source" as oscal_assessment_common_source {
+        task_uuid : uuid
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Assessment_Subject" as oscal_assessment_common_assessment_subject {
+        type : token
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        exclude_subject : ARRAY
+        remarks : str
+        include_all : str
+        include_subject : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Subject" as oscal_assessment_common_assessment_subject_Subject 
+    oscal_assessment_common_assessment_subject <|-- oscal_assessment_common_assessment_subject_Subject : Inherits
+    class "Select_Subject_By_Id" as oscal_assessment_common_select_subject_by_id {
+        subject_uuid : str
+        type : str
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Exclude_Subject" as oscal_assessment_common_select_subject_by_id_Exclude_Subject 
+    oscal_assessment_common_select_subject_by_id <|-- oscal_assessment_common_select_subject_by_id_Exclude_Subject : Inherits
+    class "Include_Subject" as oscal_assessment_common_select_subject_by_id_Include_Subject 
+    oscal_assessment_common_select_subject_by_id <|-- oscal_assessment_common_select_subject_by_id_Include_Subject : Inherits
+    class "Subject_Uuid" as oscal_assessment_common_subject_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Subject_Type" as oscal_assessment_common_subject_type {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Type" as oscal_assessment_common_subject_type_Type 
+    oscal_assessment_common_subject_type <|-- oscal_assessment_common_subject_type_Type : Inherits
+    class "Subject_Reference" as oscal_assessment_common_subject_reference {
+        subject_uuid : str
+        type : str
+        prose : str
+        title : markup-line
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Subject" as oscal_assessment_common_subject_reference_Subject 
+    oscal_assessment_common_subject_reference <|-- oscal_assessment_common_subject_reference_Subject : Inherits
+    class "Assessment_Assets" as oscal_assessment_common_assessment_assets {
+        prose : str
+        component : ARRAY
+        assessment_platform : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Assessment_Platform" as oscal_assessment_common_assessment_platform {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        oscal_property : ARRAY
+        link : ARRAY
+        uses_component : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uses_Component" as oscal_assessment_common_uses_component {
+        component_uuid : uuid
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_party : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Component_Uuid" as oscal_assessment_common_component_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Finding_Target" as oscal_assessment_common_finding_target {
+        type : string
+        target_id : token
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        status : str
+        implementation_status : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Target" as oscal_assessment_common_finding_target_Target 
+    oscal_assessment_common_finding_target <|-- oscal_assessment_common_finding_target_Target : Inherits
+    class "Target_Id" as oscal_assessment_common_target_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Status" as oscal_assessment_common_status {
+        state : token
+        reason : token
+        prose : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "State" as oscal_assessment_common_state {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Reason" as oscal_assessment_common_reason {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Observation" as oscal_assessment_common_observation {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        method : ARRAY
+        type : ARRAY
+        origin : ARRAY
+        subject : ARRAY
+        relevant_evidence : ARRAY
+        collected : dateTime-with-timezone
+        expires : dateTime-with-timezone
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Method" as oscal_assessment_common_method {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Relevant_Evidence" as oscal_assessment_common_relevant_evidence {
+        href : uri-reference
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Collected" as oscal_assessment_common_collected {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Expires" as oscal_assessment_common_expires {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Origin" as oscal_assessment_common_origin {
+        prose : str
+        actor : ARRAY
+        related_task : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Origin_Actor" as oscal_assessment_common_origin_actor {
+        type : token
+        actor_uuid : uuid
+        role_id : token
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Actor" as oscal_assessment_common_origin_actor_Actor 
+    oscal_assessment_common_origin_actor <|-- oscal_assessment_common_origin_actor_Actor : Inherits
+    class "Actor_Uuid" as oscal_assessment_common_actor_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Role_Id" as oscal_assessment_common_role_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Related_Task" as oscal_assessment_common_related_task {
+        task_uuid : uuid
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_party : ARRAY
+        subject : ARRAY
+        identified_subject : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Identified_Subject" as oscal_assessment_common_identified_subject {
+        subject_placeholder_uuid : uuid
+        prose : str
+        subject : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Subject_Placeholder_Uuid" as oscal_assessment_common_subject_placeholder_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Threat_Id" as oscal_assessment_common_threat_id {
+        system : uri
+        href : uri-reference
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "System" as oscal_assessment_common_system {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Risk" as oscal_assessment_common_risk {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        statement : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        status : token
+        origin : ARRAY
+        threat_id : ARRAY
+        characterization : ARRAY
+        mitigating_factor : ARRAY
+        deadline : dateTime-with-timezone
+        response : ARRAY
+        risk_log : str
+        related_observation : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Statement" as oscal_assessment_common_statement {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Mitigating_Factor" as oscal_assessment_common_mitigating_factor {
+        uuid : uuid
+        implementation_uuid : uuid
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        subject : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Implementation_Uuid" as oscal_assessment_common_implementation_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Deadline" as oscal_assessment_common_deadline {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Risk_Log" as oscal_assessment_common_risk_log {
+        prose : str
+        entry : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Entry" as oscal_assessment_common_entry {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        start : dateTime-with-timezone
+        end : dateTime-with-timezone
+        oscal_property : ARRAY
+        link : ARRAY
+        logged_by : ARRAY
+        status_change : str
+        related_response : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Related_Response" as oscal_assessment_common_related_response {
+        response_uuid : uuid
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        related_task : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Response_Uuid" as oscal_assessment_common_response_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Related_Observation" as oscal_assessment_common_related_observation {
+        observation_uuid : uuid
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Observation_Uuid" as oscal_assessment_common_observation_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Logged_By" as oscal_assessment_common_logged_by {
+        party_uuid : uuid
+        role_id : token
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Party_Uuid" as oscal_assessment_common_party_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Risk_Status" as oscal_assessment_common_risk_status {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Status_Change" as oscal_assessment_common_risk_status_Status_Change 
+    oscal_assessment_common_risk_status <|-- oscal_assessment_common_risk_status_Status_Change : Inherits
+    class "Characterization" as oscal_assessment_common_characterization {
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        origin : str
+        facet : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Facet" as oscal_assessment_common_facet {
+        name : token
+        system : uri
+        value : string
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Name" as oscal_assessment_common_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Value" as oscal_assessment_common_value {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Response" as oscal_assessment_common_response {
+        uuid : uuid
+        lifecycle : token
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        origin : ARRAY
+        required_asset : ARRAY
+        task : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Lifecycle" as oscal_assessment_common_lifecycle {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Required_Asset" as oscal_assessment_common_required_asset {
+        uuid : uuid
+        prose : str
+        subject : ARRAY
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Objective_Id" as oscal_assessment_common_objective_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Assessment_Part" as oscal_assessment_common_assessment_part {
+        uuid : uuid
+        name : token
+        ns : uri
+        oscal_class : token
+        title : markup-line
+        oscal_property : ARRAY
+        prose : markup-multiline
+        assessment_part : ARRAY
+        link : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Part" as oscal_assessment_common_assessment_part_Part 
+    oscal_assessment_common_assessment_part <|-- oscal_assessment_common_assessment_part_Part : Inherits
+    class "Ns" as oscal_assessment_common_ns {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Oscal_Class" as oscal_assessment_common_oscal_class {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Prose" as oscal_assessment_common_prose {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_ap {
+
+    class "Assessment_Plan" as oscal_ap_assessment_plan {
+        uuid : uuid
+        prose : str
+        metadata : str
+        import_ssp : str
+        local_definitions : str
+        terms_and_conditions : str
+        reviewed_controls : str
+        assessment_subject : ARRAY
+        assessment_assets : str
+        task : ARRAY
+        back_matter : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uuid" as oscal_ap_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Local_Definitions" as oscal_ap_local_definitions {
+        prose : str
+        component : ARRAY
+        inventory_item : ARRAY
+        user : ARRAY
+        objectives_and_methods : ARRAY
+        activity : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Terms_And_Conditions" as oscal_ap_terms_and_conditions {
+        prose : str
+        assessment_part : ARRAY
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_ar {
+
+    class "Assessment_Results" as oscal_ar_assessment_results {
+        uuid : uuid
+        prose : str
+        metadata : str
+        import_ap : str
+        local_definitions : str
+        result : ARRAY
+        back_matter : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uuid" as oscal_ar_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Local_Definitions" as oscal_ar_local_definitions {
+        prose : str
+        objectives_and_methods : ARRAY
+        activity : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Result" as oscal_ar_result {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        start : dateTime-with-timezone
+        end : dateTime-with-timezone
+        oscal_property : ARRAY
+        link : ARRAY
+        local_definitions : str
+        reviewed_controls : str
+        attestation : ARRAY
+        assessment_log : str
+        observation : ARRAY
+        risk : ARRAY
+        finding : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Result" as oscal_ar_result_Result 
+    oscal_ar_result <|-- oscal_ar_result_Result : Inherits
+    class "Title" as oscal_ar_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Description" as oscal_ar_description {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Start" as oscal_ar_start {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "End" as oscal_ar_end {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Attestation" as oscal_ar_attestation {
+        prose : str
+        responsible_party : ARRAY
+        part : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Assessment_Log" as oscal_ar_assessment_log {
+        prose : str
+        entry : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Entry" as oscal_ar_entry {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        start : dateTime-with-timezone
+        end : dateTime-with-timezone
+        oscal_property : ARRAY
+        link : ARRAY
+        logged_by : ARRAY
+        related_task : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Finding" as oscal_ar_finding {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        origin : ARRAY
+        target : str
+        implementation_statement_uuid : uuid
+        related_observation : ARRAY
+        associated_risk : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Implementation_Statement_Uuid" as oscal_ar_implementation_statement_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Related_Observation" as oscal_ar_related_observation {
+        observation_uuid : uuid
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Observation_Uuid" as oscal_ar_observation_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Associated_Risk" as oscal_ar_associated_risk {
+        risk_uuid : uuid
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Risk_Uuid" as oscal_ar_risk_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Import_Ap" as oscal_ar_import_ap {
+        href : uri-reference
+        prose : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Href" as oscal_ar_href {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_catalog {
+
+    class "Catalog" as oscal_catalog_catalog {
+        uuid : uuid
+        prose : str
+        metadata : str
+        parameter : ARRAY
+        control : ARRAY
+        group : ARRAY
+        back_matter : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uuid" as oscal_catalog_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Group" as oscal_catalog_group {
+        id : token
+        oscal_class : token
+        prose : str
+        title : markup-line
+        parameter : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        part : ARRAY
+        group : ARRAY
+        control : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Id" as oscal_catalog_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Oscal_Class" as oscal_catalog_oscal_class {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Title" as oscal_catalog_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Control" as oscal_catalog_control {
+        id : token
+        oscal_class : token
+        prose : str
+        title : markup-line
+        parameter : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        part : ARRAY
+        control : ARRAY
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_profile {
+
+    class "Profile" as oscal_profile_profile {
+        uuid : uuid
+        prose : str
+        metadata : str
+        oscal_import : ARRAY
+        merge : str
+        modify : str
+        back_matter : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uuid" as oscal_profile_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Oscal_Import" as oscal_profile_oscal_import {
+        href : uri-reference
+        prose : str
+        exclude_controls : ARRAY
+        include_all : str
+        include_controls : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Href" as oscal_profile_href {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Merge" as oscal_profile_merge {
+        prose : str
+        combine : str
+        as_is : str
+        custom : str
+        {method} fromDict(obj)
+    }
+    
+    class "Combine" as oscal_profile_combine {
+        method : str
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "As_Is" as oscal_profile_as_is {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Method" as oscal_profile_method {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Custom" as oscal_profile_custom {
+        prose : str
+        group : ARRAY
+        insert_controls : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Group" as oscal_profile_group {
+        id : token
+        oscal_class : token
+        prose : str
+        title : markup-line
+        parameter : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        part : ARRAY
+        group : ARRAY
+        insert_controls : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Id" as oscal_profile_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Oscal_Class" as oscal_profile_oscal_class {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Title" as oscal_profile_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Modify" as oscal_profile_modify {
+        prose : str
+        set_parameter : ARRAY
+        alter : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Set_Parameter" as oscal_profile_set_parameter {
+        param_id : token
+        oscal_class : token
+        depends_on : str
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        label : markup-line
+        usage : markup-multiline
+        constraint : ARRAY
+        guideline : ARRAY
+        value : ARRAY
+        select : str
+        {method} fromDict(obj)
+    }
+    
+    class "Param_Id" as oscal_profile_param_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Label" as oscal_profile_label {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Usage" as oscal_profile_usage {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Insert_Controls" as oscal_profile_insert_controls {
+        order : token
+        prose : str
+        exclude_controls : ARRAY
+        include_all : str
+        include_controls : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Order" as oscal_profile_order {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Include_All" as oscal_profile_include_all {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Select_Control_By_Id" as oscal_profile_select_control_by_id {
+        with_child_controls : str
+        prose : str
+        with_id : ARRAY
+        matching : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Exclude_Control" as oscal_profile_select_control_by_id_Exclude_Control 
+    oscal_profile_select_control_by_id <|-- oscal_profile_select_control_by_id_Exclude_Control : Inherits
+    class "Include_Control" as oscal_profile_select_control_by_id_Include_Control 
+    oscal_profile_select_control_by_id <|-- oscal_profile_select_control_by_id_Include_Control : Inherits
+    class "Include_Controls" as oscal_profile_select_control_by_id_Include_Controls 
+    oscal_profile_select_control_by_id <|-- oscal_profile_select_control_by_id_Include_Controls : Inherits
+    class "Exclude_Controls" as oscal_profile_select_control_by_id_Exclude_Controls 
+    oscal_profile_select_control_by_id <|-- oscal_profile_select_control_by_id_Exclude_Controls : Inherits
+    class "With_Id" as oscal_profile_with_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Matching" as oscal_profile_matching {
+        pattern : str
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Alter" as oscal_profile_alter {
+        control_id : str
+        prose : str
+        remove : ARRAY
+        add : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Remove" as oscal_profile_remove {
+        by_name : token
+        by_class : token
+        by_id : token
+        by_item_name : token
+        by_ns : token
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "By_Name" as oscal_profile_by_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "By_Class" as oscal_profile_by_class {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "By_Id" as oscal_profile_by_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "By_Item_Name" as oscal_profile_by_item_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "By_Ns" as oscal_profile_by_ns {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Add" as oscal_profile_add {
+        position : token
+        by_id : token
+        prose : str
+        title : markup-line
+        parameter : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        part : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Position" as oscal_profile_position {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "With_Child_Controls" as oscal_profile_with_child_controls {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Pattern" as oscal_profile_pattern {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_component_definition {
+
+    class "Component_Definition" as oscal_component_definition_component_definition {
+        uuid : uuid
+        prose : str
+        metadata : str
+        import_component_definition : ARRAY
+        component : ARRAY
+        capability : ARRAY
+        back_matter : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uuid" as oscal_component_definition_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Import_Component_Definition" as oscal_component_definition_import_component_definition {
+        href : uri-reference
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Href" as oscal_component_definition_href {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Defined_Component" as oscal_component_definition_defined_component {
+        uuid : uuid
+        type : str
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        purpose : markup-line
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_role : ARRAY
+        protocol : ARRAY
+        control_implementation : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Component" as oscal_component_definition_defined_component_Component 
+    oscal_component_definition_defined_component <|-- oscal_component_definition_defined_component_Component : Inherits
+    class "Title" as oscal_component_definition_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Description" as oscal_component_definition_description {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Purpose" as oscal_component_definition_purpose {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Defined_Component_Type" as oscal_component_definition_defined_component_type {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Type" as oscal_component_definition_defined_component_type_Type 
+    oscal_component_definition_defined_component_type <|-- oscal_component_definition_defined_component_type_Type : Inherits
+    class "Capability" as oscal_component_definition_capability {
+        uuid : uuid
+        name : string
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        incorporates_component : ARRAY
+        control_implementation : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Name" as oscal_component_definition_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Incorporates_Component" as oscal_component_definition_incorporates_component {
+        component_uuid : uuid
+        prose : str
+        description : markup-multiline
+        {method} fromDict(obj)
+    }
+    
+    class "Component_Uuid" as oscal_component_definition_component_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Control_Implementation" as oscal_component_definition_control_implementation {
+        uuid : uuid
+        source : str
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        set_parameter : ARRAY
+        implemented_requirement : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Implemented_Requirement" as oscal_component_definition_implemented_requirement {
+        uuid : uuid
+        control_id : str
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        set_parameter : ARRAY
+        responsible_role : ARRAY
+        statement : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Statement" as oscal_component_definition_statement {
+        statement_id : str
+        uuid : uuid
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_role : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_ssp {
+
+    class "System_Security_Plan" as oscal_ssp_system_security_plan {
+        uuid : uuid
+        prose : str
+        metadata : str
+        import_profile : str
+        system_characteristics : str
+        system_implementation : str
+        control_implementation : str
+        back_matter : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uuid" as oscal_ssp_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Import_Profile" as oscal_ssp_import_profile {
+        href : uri-reference
+        prose : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Href" as oscal_ssp_href {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "System_Characteristics" as oscal_ssp_system_characteristics {
+        prose : str
+        system_id : ARRAY
+        system_name : string
+        system_name_short : string
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        date_authorized : str
+        security_sensitivity_level : str
+        system_information : str
+        security_impact_level : str
+        status : str
+        authorization_boundary : str
+        network_architecture : str
+        data_flow : str
+        responsible_party : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "System_Name" as oscal_ssp_system_name {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "System_Name_Short" as oscal_ssp_system_name_short {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Description" as oscal_ssp_description {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Security_Sensitivity_Level" as oscal_ssp_security_sensitivity_level {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "System_Information" as oscal_ssp_system_information {
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        information_type : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Information_Type" as oscal_ssp_information_type {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        categorization : ARRAY
+        oscal_property : ARRAY
+        link : ARRAY
+        confidentiality_impact : str
+        integrity_impact : str
+        availability_impact : str
+        {method} fromDict(obj)
+    }
+    
+    class "Title" as oscal_ssp_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Categorization" as oscal_ssp_categorization {
+        system : uri
+        prose : str
+        information_type_id : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "System" as oscal_ssp_system {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Information_Type_Id" as oscal_ssp_information_type_id {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Confidentiality_Impact" as oscal_ssp_confidentiality_impact {
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        base : str
+        selected : str
+        adjustment_justification : str
+        {method} fromDict(obj)
+    }
+    
+    class "Integrity_Impact" as oscal_ssp_integrity_impact {
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        base : str
+        selected : str
+        adjustment_justification : str
+        {method} fromDict(obj)
+    }
+    
+    class "Availability_Impact" as oscal_ssp_availability_impact {
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        base : str
+        selected : str
+        adjustment_justification : str
+        {method} fromDict(obj)
+    }
+    
+    class "Base" as oscal_ssp_base {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Selected" as oscal_ssp_selected {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Adjustment_Justification" as oscal_ssp_adjustment_justification {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Security_Impact_Level" as oscal_ssp_security_impact_level {
+        prose : str
+        security_objective_confidentiality : string
+        security_objective_integrity : string
+        security_objective_availability : string
+        {method} fromDict(obj)
+    }
+    
+    class "Security_Objective_Confidentiality" as oscal_ssp_security_objective_confidentiality {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Security_Objective_Integrity" as oscal_ssp_security_objective_integrity {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Security_Objective_Availability" as oscal_ssp_security_objective_availability {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Status" as oscal_ssp_status {
+        state : string
+        prose : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "State" as oscal_ssp_state {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Date_Authorized" as oscal_ssp_date_authorized {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Authorization_Boundary" as oscal_ssp_authorization_boundary {
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        diagram : ARRAY
+        remarks : markup-multiline
+        {method} fromDict(obj)
+    }
+    
+    class "Remarks" as oscal_ssp_remarks {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Diagram" as oscal_ssp_diagram {
+        uuid : uuid
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        caption : markup-line
+        remarks : markup-multiline
+        {method} fromDict(obj)
+    }
+    
+    class "Caption" as oscal_ssp_caption {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Network_Architecture" as oscal_ssp_network_architecture {
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        diagram : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Data_Flow" as oscal_ssp_data_flow {
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        diagram : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "System_Implementation" as oscal_ssp_system_implementation {
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        leveraged_authorization : ARRAY
+        user : ARRAY
+        component : ARRAY
+        inventory_item : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Leveraged_Authorization" as oscal_ssp_leveraged_authorization {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        oscal_property : ARRAY
+        link : ARRAY
+        party_uuid : uuid
+        date_authorized : str
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Party_Uuid" as oscal_ssp_party_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Control_Implementation" as oscal_ssp_control_implementation {
+        prose : str
+        description : markup-multiline
+        set_parameter : ARRAY
+        implemented_requirement : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Implemented_Requirement" as oscal_ssp_implemented_requirement {
+        uuid : uuid
+        control_id : str
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        set_parameter : ARRAY
+        responsible_role : ARRAY
+        statement : ARRAY
+        by_component : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Statement" as oscal_ssp_statement {
+        statement_id : str
+        uuid : uuid
+        prose : str
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_role : ARRAY
+        by_component : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "By_Component" as oscal_ssp_by_component {
+        component_uuid : uuid
+        uuid : uuid
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        set_parameter : ARRAY
+        implementation_status : str
+        export : str
+        inherited : ARRAY
+        satisfied : ARRAY
+        responsible_role : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Component_Uuid" as oscal_ssp_component_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Export" as oscal_ssp_export {
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        provided : ARRAY
+        responsibility : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Provided" as oscal_ssp_provided {
+        uuid : uuid
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_role : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Responsibility" as oscal_ssp_responsibility {
+        uuid : uuid
+        provided_uuid : str
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_role : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Inherited" as oscal_ssp_inherited {
+        uuid : uuid
+        provided_uuid : str
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_role : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Satisfied" as oscal_ssp_satisfied {
+        uuid : uuid
+        responsibility_uuid : str
+        prose : str
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        responsible_role : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Provided_Uuid" as oscal_ssp_provided_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Responsibility_Uuid" as oscal_ssp_responsibility_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+}
+
+package oscal_poam {
+
+    class "Plan_Of_Action_And_Milestones" as oscal_poam_plan_of_action_and_milestones {
+        uuid : uuid
+        prose : str
+        metadata : str
+        import_ssp : str
+        system_id : str
+        local_definitions : str
+        observation : ARRAY
+        risk : ARRAY
+        poam_item : ARRAY
+        back_matter : str
+        {method} fromDict(obj)
+    }
+    
+    class "Uuid" as oscal_poam_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Local_Definitions" as oscal_poam_local_definitions {
+        prose : str
+        component : ARRAY
+        inventory_item : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Poam_Item" as oscal_poam_poam_item {
+        uuid : uuid
+        prose : str
+        title : markup-line
+        description : markup-multiline
+        oscal_property : ARRAY
+        link : ARRAY
+        origin : ARRAY
+        related_observation : ARRAY
+        associated_risk : ARRAY
+        remarks : str
+        {method} fromDict(obj)
+    }
+    
+    class "Title" as oscal_poam_title {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Description" as oscal_poam_description {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Origin" as oscal_poam_origin {
+        prose : str
+        actor : ARRAY
+        {method} fromDict(obj)
+    }
+    
+    class "Related_Observation" as oscal_poam_related_observation {
+        observation_uuid : uuid
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Observation_Uuid" as oscal_poam_observation_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Associated_Risk" as oscal_poam_associated_risk {
+        risk_uuid : uuid
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+    class "Risk_Uuid" as oscal_poam_risk_uuid {
+        prose : str
+        {method} fromDict(obj)
+    }
+    
+}
+ 
+oscal_metadata <|-- oscal_catalog_common : Imports
+oscal_metadata <|-- oscal_implementation_common : Imports
+oscal_catalog_common <|-- oscal_implementation_common : Imports
+oscal_catalog_common <|-- oscal_assessment_common : Imports
+oscal_implementation_common <|-- oscal_assessment_common : Imports
+oscal_metadata <|-- oscal_ap : Imports
+oscal_assessment_common <|-- oscal_ap : Imports
+oscal_metadata <|-- oscal_ar : Imports
+oscal_assessment_common <|-- oscal_ar : Imports
+oscal_catalog_common <|-- oscal_catalog : Imports
+oscal_metadata <|-- oscal_catalog : Imports
+oscal_metadata <|-- oscal_profile : Imports
+oscal_catalog_common <|-- oscal_profile : Imports
+oscal_implementation_common <|-- oscal_component_definition : Imports
+oscal_metadata <|-- oscal_ssp : Imports
+oscal_implementation_common <|-- oscal_ssp : Imports
+oscal_metadata <|-- oscal_poam : Imports
+oscal_implementation_common <|-- oscal_poam : Imports
+oscal_assessment_common <|-- oscal_poam : Imports
+oscal_catalog <|-- oscal_complete : Imports
+oscal_profile <|-- oscal_complete : Imports
+oscal_component_definition <|-- oscal_complete : Imports
+oscal_ssp <|-- oscal_complete : Imports
+oscal_ap <|-- oscal_complete : Imports
+oscal_ar <|-- oscal_complete : Imports
+oscal_poam <|-- oscal_complete : Imports
+
+@enduml

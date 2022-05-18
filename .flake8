@@ -1,5 +1,5 @@
 [flake8]
 exclude = .git,__pycache__,OSCAL,oscal-content
 per-file-ignores =
-    pyoscal/pyoscal/__init__.py:F401,F403,F811
-    pyoscal/pyoscal/*/__init__.py:F401
+    pyoscal/core/__init__.py:F401,F403,F811
+    pyoscal/core/*/__init__.py:F401
