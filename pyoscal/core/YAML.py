@@ -1,7 +1,7 @@
 
 from .Parser import OSCAL_IO
 from pyoscal import *  # noqa: F401,F403 # necessary for exec statements
-
+from pyoscal.core import *  # noqa: F401,F403
 import yaml
 
 import sys
